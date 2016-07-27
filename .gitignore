@@ -1,0 +1,4 @@
+node_modules
+public/lib/bootstrap
+public/lib/jquery
+.idea
