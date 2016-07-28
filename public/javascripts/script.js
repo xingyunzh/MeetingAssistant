@@ -1,11 +1,13 @@
 /**
- * Created by Administrator on 2016/7/20.
+ * Created by morrieati on 7/24/16.
  */
 function logIn() {
-    var username = $("#username")[0].value;
+    //var username = $("#username")[0].value;
+    var username = $("#username").val();
+    var password = $("#password").val();
+    console.log(username);
     if (username !== "") {
-        var password = $("#password")[0].value;
-        $.post("/", {
+        $.post("/login", {
             username: username,
             password: password
         }, function (data) {
