@@ -1,6 +1,6 @@
 {
-  "name": "microblog",
-  "version": "0.0.0",
+  "name": "MeetingAssistantBackend",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
