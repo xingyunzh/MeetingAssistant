@@ -13,7 +13,5 @@ exports.verifyID = function (req, res, next) {
         console.log(body);
     });
 
-
-    //console.log(req.body.username);
     res.send("ok");
 };
