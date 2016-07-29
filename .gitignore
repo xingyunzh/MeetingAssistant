@@ -1,3 +1,4 @@
-node_modules/
-.idea/
-public/lib/
+app/node_modules
+app/public/lib/bootstrap
+app/public/lib/jquery
+.idea
