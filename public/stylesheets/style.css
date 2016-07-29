@@ -2,7 +2,18 @@ body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-
+#Time{
+  padding: 40px;
+  border-style: solid; border-width: 1px;
+}
+#exactTime{
+  padding: 20px;
+  border-style: solid; border-width: 1px;
+}
+#Details{
+  padding: 20px;
+  border-style: solid; border-width: 1px;
+}
 a {
-  color: #00B7FF;
+  padding: 5px;
 }
