@@ -2,26 +2,30 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title><%= title %>Setting</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title><%= title %></title>
 </head>
 <body>
-<div class="row">
-    <div class="col-md-1">
-        <select class="form-control input-lg">年</select>
-    </div>
-    <div class="col-md-1">
-        <select class="form-control input-lg">月</select>
-    </div>
-    <div class="col-md-1">
-        <select class="form-control input-lg">日</select>
-    </div>
-    <div class="col-md-1">
-        <select class="form-control input-lg">小时</select>
-    </div>
-    <div class="col-md-1">
-        <select class="form-control input-lg">分</select>
-    </div>
-</div>
+<% include includes/nav %>
+<% include includes/agenda%>
+<% include includes/css %>
+<% include includes/js %>
+<% include includes/datetimepicker%>
+<script>
+    function addRow() {
+        $("#table").append("<tr> <td><input type='checkbox' style='width: 100%' onclick='Select(event)'></td><td><input type='text' style='width: 100%'></td> <td><input type='text' style='width: 100%'></td> <td><input type='text' style='width: 100%'></td> <td><input type='text' style='width: 100%'></td> </tr>");
+    }
+    function Select(e) {
+        if (e.target.checked) {
+            console.log($(e.target).parent().parent())
+            $(e.target).parent().parent().attr("id","delectall");
+        } else {
+
+        }
+    }
+    $("#delect").click(function(){
+        $("#delectall").remove();
+    });
+</script>
 </body>
 </html>
