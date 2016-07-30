@@ -1,4 +1,4 @@
-node_modules/
-public/lib/bootstrap/
-public/lib/jquery/
+app/node_modules/
+app/public/lib/bootstrap/
+app/public/lib/jquery/
 .idea/
