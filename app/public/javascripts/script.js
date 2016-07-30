@@ -7,7 +7,7 @@ function logIn() {
     var password = $("#password").val();
     console.log(username);
     if (username !== "") {
-        $.post("/login", {
+        $.post("/user/login", {
             username: username,
             password: password
         }, function (data) {

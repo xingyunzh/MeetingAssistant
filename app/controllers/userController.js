@@ -1,3 +1,4 @@
+var request = require('request');
 var User = require("../models/user");
 
 exports.logStatus = function (req, res, next) {
@@ -24,3 +25,16 @@ exports.logStatus = function (req, res, next) {
     });
     console.log("Log Saved");
 }
+
+exports.verifyID = function (req, res, next) {
+    request.post('http://www.xingyunzh.com:3001/users/verify', {
+        form: {
+            'username': req.body.username,
+            'password': req.body.password
+        }
+    }, function (error, response, body) {
+        console.log(body);
+    });
+
+    res.send("ok");
+};
