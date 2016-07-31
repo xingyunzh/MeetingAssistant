@@ -1,7 +1,8 @@
 var request = require('request');
+var jwt = require('jsonwebtoken');
 var User = require("../models/user");
 
-exports.verifyID = function (req, res, next) {
+exports.verifyID = function (req, res) {
     let username = req.body.username;
     let password = req.body.password;
 
@@ -11,12 +12,12 @@ exports.verifyID = function (req, res, next) {
             'password': password
         }
     }, function (error, response, body) {
-        if (body != undefined) {
-            var userBody = JSON.parse(body).body;
+        var userBody = JSON.parse(body).body;
+        if (userBody) {
             User
-                .find({username: userBody.username})
-                .exec(function (err, docs) {
-                    if (docs.length != 0) {
+                .findOne({username: userBody.username})
+                .exec(function (err, doc) {
+                    if (doc) {
                         User.update(
                             {username: userBody.username},
                             {lastLoginDate: new Date()},
@@ -25,6 +26,7 @@ exports.verifyID = function (req, res, next) {
                                 console.log(rawResponse);
                             }
                         );
+
                         console.log('User Logged In!');
                     } else {
                         var user = new User({
@@ -34,16 +36,29 @@ exports.verifyID = function (req, res, next) {
                             createdDate: new Date(),
                             lastLoginDate: new Date()
                         });
+
                         user.save(function (err, user) {
                             if (err) return console.error(err);
                         });
+
                         console.log("New User Created!");
                     }
                 });
+            var token = jwt.sign(userBody, 'xingyunzh-secret', {
+                expiresIn: 300
+            });
+
+            res.json({
+                success: true,
+                token: token,
+                name: userBody.name
+            });
+
         } else {
             console.log("Verification failed!");
+            res.json({
+                success: false
+            });
         }
     });
-
-    res.send("ok");
 };

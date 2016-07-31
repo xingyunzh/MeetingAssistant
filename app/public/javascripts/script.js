@@ -1,6 +1,7 @@
 /**
  * Created by morrieati on 7/24/16.
  */
+
 function logIn() {
     //var username = $("#username")[0].value;
     var username = $("#username").val();
@@ -11,7 +12,13 @@ function logIn() {
             username: username,
             password: password
         }, function (data) {
-            console.log(data);
+            // if (data.success == true) {
+            //     $.get("/user", {
+            //         token: data.token
+            //     });
+            // } else {
+            //     console.log(data.success);
+            // }
         });
     } else {
         alert("Username cannot be empty!");

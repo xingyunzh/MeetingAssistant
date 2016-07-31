@@ -4,10 +4,8 @@
 var express = require('express');
 var router = express.Router();
 
-//var indexController = require('')
-
-router.get('/', function (req, res, next) {
-    res.render('index', {title: 'Index'});
+router.get('/', function (req, res) {
+    res.render('index', {title: 'Index', user: 'Login'});
 });
 
 module.exports = router;
