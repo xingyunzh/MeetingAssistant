@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Setting</title>
+    <script src="../public/javascripts/script.js"></script>
+    <link href="../js/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="../js/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+</head>
+<body>
+
+
+<script>
+    function addRow() {
+        $("#table").append("<tr> <td><input type='checkbox' style='width: 100%' onclick='Select(event)'></td><td><input type='text' style='width: 100%'></td> <td><input type='text' style='width: 100%'></td> <td><input type='text' style='width: 100%'></td> <td><input type='text' style='width: 100%'></td> </tr>");
+    }
+    function Select(e) {
+        if (e.target.checked) {
+            console.log($(e.target).parent().parent())
+            $(e.target).parent().parent().attr("id","delectall");
+        } else {
+
+        }
+    }
+    $("#delect").click(function(){
+        $("#delectall").remove();
+    });
+</script>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
+<script type="text/javascript">
+
+</script>
+</body>
+</html>

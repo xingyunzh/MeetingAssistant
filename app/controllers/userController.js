@@ -2,8 +2,8 @@ var request = require('request');
 var User = require("../models/user");
 
 exports.verifyID = function (req, res, next) {
-    let username = req.body.username;
-    let password = req.body.password;
+    var username = req.body.username;
+    var password = req.body.password;
 
     request.post('http://www.xingyunzh.com:3001/users/verify', {
         form: {
