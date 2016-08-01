@@ -1,7 +1,19 @@
+body {
+    overflow: hidden;
+}
+
 #loginJumbotron {
     height: 100%;
 }
 
-#mainContainer{
+#mainContainer {
     margin-top: 10%;
+}
+
+#descriptionDiv {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: default;
 }

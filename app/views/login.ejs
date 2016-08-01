@@ -9,23 +9,23 @@
 <div class="jumbotron" id="loginJumbotron">
     <div class="container" id="mainContainer">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6" id="descriptionDiv">
                 <h2>Welcome to</h2>
                 <h1>Meeting Assistant</h1>
-                <p>This tool can help you improve the experience of holding a meeting!</p>
+                <p>Our mission is to help you improve the experience of holding a meeting!</p>
             </div>
-            <div class="col-md-4 col-md-offset-2">
+            <div class="col-md-4 col-md-offset-2" id="loginDiv">
                 <form>
                     <div class="form-group">
                         <label for="username">Username</label>
-                        <input type="text" class="form-control" id="username" placeholder="Username">
+                        <input type="text" class="form-control" id="username" placeholder="Username" onclick="setLoginButtonDefault()">
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" placeholder="Password">
+                        <input type="password" class="form-control" id="password" placeholder="Password" onclick="setLoginButtonDefault()">
                     </div>
                     <br>
-                    <button type="button" class="btn btn-success btn-block" onclick="logIn()">Login</button>
+                    <button type="button" class="btn btn-success btn-block" id="loginButton" onclick="logIn()">Login</button>
                 </form>
             </div>
         </div>
