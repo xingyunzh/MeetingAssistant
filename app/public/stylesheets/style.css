@@ -52,6 +52,10 @@ body {
 
 .meeting-panel {
     margin: 10px 15px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .meeting-panel:hover {
