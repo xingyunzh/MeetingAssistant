@@ -1,7 +1,9 @@
 var request = require('request');
+var jwt = require('jsonwebtoken');
 var User = require("../models/user");
 
-exports.verifyID = function (req, res, next) {
+exports.verifyID = function (req, res) {
+
     var username = req.body.username;
     var password = req.body.password;
 
@@ -11,18 +13,53 @@ exports.verifyID = function (req, res, next) {
             'password': password
         }
     }, function (error, response, body) {
-        console.log(body);
-    });
+        var userBody = JSON.parse(body).body;
+        if (userBody) {
+            User
+                .findOne({username: userBody.username})
+                .exec(function (err, doc) {
+                    if (doc) {
+                        User.update(
+                            {username: userBody.username},
+                            {lastLoginDate: new Date()},
+                            {multi: true},
+                            function (err, rawResponse) {
+                                console.log(rawResponse);
+                            }
+                        );
 
-    var user = new User({
-        name: username,
-        password: password,
-        date: new Date()
-    });
-    user.save(function (err, user) {
-        if (err) return console.error(err);
-    });
-    console.log("Log Saved");
+                        console.log('User Logged In!');
+                    } else {
+                        var user = new User({
+                            username: userBody.username,
+                            name: userBody.name,
+                            sex: userBody.sex,
+                            createdDate: new Date(),
+                            lastLoginDate: new Date()
+                        });
 
-    res.send("ok");
+                        user.save(function (err, user) {
+                            if (err) return console.error(err);
+                        });
+
+                        console.log("New User Created!");
+                    }
+                });
+            var token = jwt.sign(userBody, 'xingyunzh-secret', {
+                expiresIn: 300
+            });
+
+            res.json({
+                success: true,
+                token: token,
+                name: userBody.name
+            });
+
+        } else {
+            console.log("Verification failed!");
+            res.json({
+                success: false
+            });
+        }
+    });
 };
