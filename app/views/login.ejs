@@ -7,29 +7,30 @@
 </head>
 <body style="height: 100%">
 <div class="jumbotron" id="login-jumbotron">
-    <div class="container" id="main-container">
-        <div class="row">
-            <div class="col-md-6" id="desciption-div">
-                <h2>Welcome to</h2>
-                <h1>Meeting Assistant</h1>
-                <p>Our mission is to help you improve the experience of holding a meeting!</p>
-            </div>
-            <div class="col-md-4 col-md-offset-2" id="login-div">
-                <form>
-                    <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="text" class="form-control" id="username" placeholder="Username" onclick="setLoginButtonDefault()">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" placeholder="Password" onclick="setLoginButtonDefault()">
-                    </div>
-                    <br>
-                    <button type="button" class="btn btn-success btn-block" id="login-button" onclick="logIn()">Login</button>
-                </form>
+    <div class="white-background"></div>
+        <div class="container" id="main-container">
+            <div class="row">
+                <div class="col-md-6" id="desciption-div">
+                    <h2>Welcome to</h2>
+                    <h1>Meeting Assistant</h1>
+                    <p>Our mission is to help you improve the experience of holding a meeting!</p>
+                </div>
+                <div class="col-md-4 col-md-offset-2 well" id="login-div">
+                    <form>
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" id="username" placeholder="Username" onclick="setLoginButtonDefault()">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="Password" onclick="setLoginButtonDefault()">
+                        </div>
+                        <br>
+                        <button type="button" class="btn btn-success btn-block" id="login-button" onclick="logIn()">Login</button>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
 </div>
 <% include includes/css %>
 <% include includes/js %>
