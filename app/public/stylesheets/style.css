@@ -2,18 +2,31 @@ body {
     overflow: hidden;
 }
 
-#loginJumbotron {
+#login-jumbotron {
     height: 100%;
 }
 
-#mainContainer {
+#main-container {
     margin-top: 10%;
 }
 
-#descriptionDiv {
+#desciption-div {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
     cursor: default;
+}
+
+.meeting-panel {
+    margin: 10px 15px;
+}
+
+.meeting-panel:hover {
+    background-color: #F5F5F5;
+    cursor: pointer;
+}
+
+.meeting-date-time {
+    text-align: right;
 }

@@ -15,7 +15,7 @@ function logIn() {
             if (data.success == true) {
                 window.location.href = "/meeting";
             } else {
-                $("#loginButton")
+                $("#login-button")
                     .addClass("btn-danger")
                     .removeClass("btn-success")
                     .text("Wrong Username or Password!");
@@ -29,7 +29,7 @@ function logIn() {
 }
 
 function setLoginButtonDefault() {
-    $("#loginButton")
+    $("#login-button")
         .addClass("btn-success")
         .removeClass("btn-danger")
         .text("Login");
