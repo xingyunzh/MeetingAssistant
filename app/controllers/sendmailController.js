@@ -22,14 +22,16 @@ exports.sendmail=function (options) {
         subject: 'Meeting invitation', // 标题
         //text和html两者只支持一种
         //text: 'Hello world ?', // 标题
-        html: '<b>Dear sir/madam:</b>' +
-        '<br>I am delighted that you have accepted our invitation to attend the Conference as a/an '+options.sta+
-        '<br>About the arrangements for the meeting as follows:' +
-        '<br>1.Meeting time:'+ options.meetingtime.toString()+
-        '<br>2.Meeting place:'+options.place.toString()+
-        '<br>3.Meeting name:'+options.meetingname.toString()+
-        '<br>4.Conference description:'+options.des.toString()+
-        '<br>5.The agenda:'+options.agen.toString()// html 内容
+        html:'<b>Dear sir/madam:</b>'+
+        '<br>It is delighted that you have accepted our invitation to attend the Conference as a/an '+options.sta.toString()+
+        '<br>About the arrangements for the meeting as follows:'+
+        '<br>1.Meeting name:'+options.meetingname+
+        '<br>2.Meeting time:'+options.meetingtime+
+        '<br>3.Meeting place:'+options.place+
+        '<br>4.Conference description:'+options.des+
+        '<br>5.The agenda:'+options.agen+
+        '<p>Please go here to enter <a href="{{ reset }}">MeetingAssistant</a></p>'+
+        '<p><a href="{{ reset }}">Click here</a>to add the meeting to your canlendar.</p>'
     };
 
 // send mail with defined transport object
