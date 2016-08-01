@@ -12,6 +12,8 @@
     "ejs": "~2.4.1",
     "express": "~4.13.4",
     "express-jwt": "^3.4.0",
+    "jsonwebtoken": "^7.1.7",
+    "moment": "^2.14.1",
     "mongoose": "^4.5.7",
     "morgan": "~1.7.0",
     "request": "^2.74.0",
