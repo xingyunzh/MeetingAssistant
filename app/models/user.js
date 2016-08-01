@@ -4,10 +4,11 @@
 var mongoose = require('mongoose');
 
 var userSchema = mongoose.Schema({
+    username: String,
     name: String,
-    password: String,
-    date: Date,
-    status: String
+    sex: String,
+    createdDate: Date,
+    lastLoginDate: Date
 });
 
 module.exports = mongoose.model('User', userSchema);
