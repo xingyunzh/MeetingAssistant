@@ -3,8 +3,8 @@ var jwt = require('jsonwebtoken');
 var User = require("../models/user");
 
 exports.verifyID = function (req, res) {
-    let username = req.body.username;
-    let password = req.body.password;
+    var username = req.body.username;
+    var password = req.body.password;
 
     request.post('http://www.xingyunzh.com:3001/users/verify', {
         form: {
