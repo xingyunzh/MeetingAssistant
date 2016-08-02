@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title><%= title %></title>
+    <title>Login</title>
 </head>
 <body style="height: 100%">
 <div class="jumbotron" id="login-jumbotron">
@@ -34,5 +34,8 @@
 </div>
 <% include includes/css %>
 <% include includes/js %>
+<script>
+    history.replaceState({}, "Login", location.origin);
+</script>
 </body>
 </html>

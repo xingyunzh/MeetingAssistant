@@ -12,25 +12,27 @@ exports.verifyID = function (req, res) {
             'password': password
         }
     }, function (error, response, body) {
+        if (error) return console.error(error);
+
         if (body) {
             var userBody = JSON.parse(body).body;
             if (userBody) {
                 User
                     .findOne({thirdPartyId: userBody._id})
-                    .exec(function (err, doc) {
-                        if (doc) {
+                    .exec(function (err, user) {
+                        if (err) return console.error(err);
+
+                        if (user) {
                             User.update(
                                 {thirdPartyId: userBody._id},
                                 {lastLoginDate: new Date()},
                                 {multi: true},
                                 function (err, rawResponse) {
-                                    console.log(rawResponse);
+                                    if (err) return console.error(err);
                                 }
                             );
-
-                            console.log('User Logged In!');
                         } else {
-                            var user = new User({
+                            user = new User({
                                 thirdPartyId: userBody._id,
                                 fullName: userBody.name,
                                 createdDate: new Date(),
@@ -40,20 +42,16 @@ exports.verifyID = function (req, res) {
                             user.save(function (err, user) {
                                 if (err) return console.error(err);
                             });
-
-                            console.log("New User Created!");
                         }
+                        var token = jwt.sign(user, 'xingyunzh-secret', {
+                            expiresIn: 300
+                        });
+
+                        res.json({
+                            success: true,
+                            token: token,
+                        });
                     });
-                var token = jwt.sign(userBody, 'xingyunzh-secret', {
-                    expiresIn: 300
-                });
-
-                res.json({
-                    success: true,
-                    token: token,
-                    name: userBody.name
-                });
-
             } else {
                 console.log("Verification failed!");
                 res.json({

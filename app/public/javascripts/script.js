@@ -13,7 +13,14 @@ function logIn() {
             password: password
         }, function (data) {
             if (data.success == true) {
-                window.location.href = "/meeting";
+                localStorage.setItem('token', data.token);
+                var tokenHeader = {
+                    headers: {'x-access-token': data.token}
+                };
+                $.ajax('/meeting', tokenHeader).done(function (page) {
+                    history.replaceState(tokenHeader, "Meeting",location.origin + "/meeting");
+                    document.write(page);
+                });
             } else {
                 $("#login-button")
                     .addClass("btn-danger")
