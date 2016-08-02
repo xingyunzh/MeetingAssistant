@@ -3,4 +3,4 @@ app/public/lib/
 .idea/
 release/
 
-npm-debug.log
+*.log
