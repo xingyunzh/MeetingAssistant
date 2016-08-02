@@ -16,7 +16,6 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap": "^3.3.7",
-    "bootstrap-datetimepicker": "^0.0.11"
+    "bootstrap": "^3.3.7"
   }
 }

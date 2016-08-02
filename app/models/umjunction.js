@@ -1,11 +1,12 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
-var umjunctionSchema = mongoose.Schema({
-	userId:{
-		type:Schema.Types.ObjectId,
+var umjunctionSchema = Schema({
+    userId: {
+        type: Schema.Types.ObjectId,
 
-		ref:'user'
-	}
+        ref: 'user'
+    }
 });
 
 module.exports = mongoose.model('UMJunction', umjunctionSchema);

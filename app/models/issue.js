@@ -1,9 +1,10 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
-var issueSchema = mongoose.Schema({
-	description:String,
+var issueSchema = Schema({
+    description: String,
 
-	result:String
+    result: String
 });
 
 module.exports = mongoose.model('Issue', issueSchema);

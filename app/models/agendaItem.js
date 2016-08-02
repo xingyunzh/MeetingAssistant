@@ -1,19 +1,20 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
-var agandaItemSchema = mongoose.Schema({
-	
-	title: String,
+var agendaItemSchema = Schema({
 
-	description: String,
+    title: String,
 
-	startTime : Date,
+    description: String,
 
-	endTime : Date,
+    startTime: Date,
 
-	issues : [{
-		type: Schema.Types.ObjectId,
-		ref : 'Issue'
-	}]
+    endTime: Date,
+
+    issues: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Issue'
+    }]
 });
 
 module.exports = mongoose.model('AgendaItem', agendaItemSchema);

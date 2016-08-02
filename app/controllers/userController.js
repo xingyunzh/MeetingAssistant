@@ -16,11 +16,11 @@ exports.verifyID = function (req, res) {
             var userBody = JSON.parse(body).body;
             if (userBody) {
                 User
-                    .findOne({username: userBody.username})
+                    .findOne({thirdPartyId: userBody._id})
                     .exec(function (err, doc) {
                         if (doc) {
                             User.update(
-                                {username: userBody.username},
+                                {thirdPartyId: userBody._id},
                                 {lastLoginDate: new Date()},
                                 {multi: true},
                                 function (err, rawResponse) {
@@ -31,9 +31,8 @@ exports.verifyID = function (req, res) {
                             console.log('User Logged In!');
                         } else {
                             var user = new User({
-                                username: userBody.username,
-                                name: userBody.name,
-                                sex: userBody.sex,
+                                thirdPartyId: userBody._id,
+                                fullName: userBody.name,
                                 createdDate: new Date(),
                                 lastLoginDate: new Date()
                             });
