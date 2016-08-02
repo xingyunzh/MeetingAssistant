@@ -14,14 +14,14 @@ body {
     }
 }
 
-@media screen and (min-width: 800px) and (min-height: 600px) and (orientation: landscape){
+@media screen and (min-width: 800px) and (min-height: 600px) and (orientation: landscape) {
     #login-jumbotron {
         background-size: 100% auto;
         background-repeat: no-repeat;
     }
 }
 
-@media screen and (max-width: 800px) and (max-height: 600px){
+@media screen and (max-width: 800px) and (max-height: 600px) {
     #login-jumbotron {
         background-size: auto 100%;
         background-repeat: no-repeat;
@@ -69,4 +69,8 @@ body {
 
 #login-button:focus {
     outline: none;
+}
+
+#add-meeting-button:hover {
+    background-color: #e7e7e7;
 }
