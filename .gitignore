@@ -1,4 +1,3 @@
 app/node_modules
-app/public/lib/bootstrap
-app/public/lib/jquery
+app/public/lib
 .idea

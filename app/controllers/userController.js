@@ -3,6 +3,7 @@ var jwt = require('jsonwebtoken');
 var User = require("../models/user");
 
 exports.verifyID = function (req, res) {
+
     var username = req.body.username;
     var password = req.body.password;
 
