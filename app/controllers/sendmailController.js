@@ -33,8 +33,9 @@ exports.sendmail=function (options) {
         '<p>Please go here to enter <a href="{{ reset }}">MeetingAssistant</a></p>'+
         '<p><a href="{{ reset }}">Click here</a>to add the meeting to your canlendar.</p>'
     };
-    var mailOptions2={from: '1443093525@qq.com', // 发件地址
-        to: options.toparticipatemail, // 收件列表
+    var mailOptions2 = {
+        from: '1443093525@qq.com', // 发件地址
+        to: options.toconventionermail, // 收件列表
         subject: 'Meeting invitation', // 标题
         //text和html两者只支持一种
         //text: 'Hello world ?', // 标题
@@ -48,7 +49,7 @@ exports.sendmail=function (options) {
         '<br>5.The agenda:'+options.agen+
         '<p>Please go here to enter <a href="{{ reset }}">MeetingAssistant</a></p>'+
         '<p><a href="{{ reset }}">Click here</a>to add the meeting to your canlendar.</p>'
-    }
+    };
 
 // send mail with defined transport object
     transporter.sendMail(mailOptions1,function (error, info) {
