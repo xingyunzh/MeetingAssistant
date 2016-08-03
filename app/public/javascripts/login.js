@@ -8,7 +8,7 @@ function verifyID() {
     var email = $("#email").val();
 
     if (username !== "") {
-        $.post("/user/verification", {
+        $.post("/verification", {
             username: username,
             password: password,
             email: email == "" ? undefined : email

@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Meeting</title>
+    <% include includes/css %>
+    <% include includes/js %>
 </head>
 <body style="height: 100%">
 <% include includes/meeting/meetingCompose%>
@@ -19,8 +21,6 @@
         </div>
     </div>
 </div>
-<% include includes/css %>
-<% include includes/js %>
 <script>
     $.ajax({
         url: '/meeting',
@@ -39,7 +39,6 @@
     $(".meeting-status-panel:last").addClass("panel-success");
     $(".meeting-status:first").text("Not Done");
     $(".meeting-status:last").text("Already Done");
-
 </script>
 </body>
 </html>

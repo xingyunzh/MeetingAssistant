@@ -4,9 +4,6 @@ var router = express.Router();
 
 var userController = require('../controllers/userController');
 
-// User Login
-router.post('/verification', userController.verifyID);
-
 router.get('/', function (req, res) {
     res.render('user');
 });
