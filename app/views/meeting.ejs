@@ -23,7 +23,7 @@
 </div>
 <script>
     $.ajax({
-        url: '/meeting',
+        url: '/api/meeting',
         method: 'POST',
         headers: {'x-access-token': localStorage.getItem('token')}
     }).done(function (data) {

@@ -1,5 +1,4 @@
 var express = require('express');
-var token = require('../util/shared/token');
 var router = express.Router();
 
 var meetingController = require('../controllers/meetingController');
@@ -7,8 +6,6 @@ var meetingController = require('../controllers/meetingController');
 router.get('/', function (req, res) {
     res.render('meeting');
 });
-
-router.use(token.Parser);
 
 router.post('/', function (req, res) {
     res.json({

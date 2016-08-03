@@ -11,7 +11,7 @@
 <% include includes/nav %>
 <script>
     $.ajax({
-        url: '/user',
+        url: '/api/user',
         method: 'POST',
         headers: {'x-access-token': localStorage.getItem('token')}
     }).done(function (data) {
