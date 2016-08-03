@@ -5,7 +5,13 @@ var umjunctionSchema = Schema({
     userId: {
         type: Schema.Types.ObjectId,
 
-        ref: 'user'
+        ref: 'User'
+    }
+
+    meetingId: {
+    	type: Schema.Types.ObjectId,
+
+        ref: 'Meeting'
     }
 });
 

@@ -12,6 +12,8 @@ var meetingSchema = Schema({
 
     endTime: Date,
 
+    isOver: Boolean,
+
     isRepeat: Boolean,
 
     attendees:[String],
