@@ -47,7 +47,7 @@ exports.verifyID = function (req, res) {
                             } else {
                                 // add user to database and return token
                                 if (email) {
-                                    user = new User({
+                                    newUser = new User({
                                         thirdPartyId: userBody._id,
                                         fullName: userBody.name,
                                         email: email,
@@ -55,11 +55,11 @@ exports.verifyID = function (req, res) {
                                         lastLoginDate: new Date()
                                     });
 
-                                    user.save(function (err, rawResponse) {
+                                    newUser.save(function (err, rawResponse) {
                                         if (err) errorHandler(res, err, 'Cannot save to Database !');
                                     });
 
-                                    var token = user.generateToken(300);
+                                    var token = newUser.generateToken(300);
 
                                     res.json(util.wrapBody({
                                         success: true,
