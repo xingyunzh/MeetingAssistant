@@ -1,10 +1,12 @@
 var request = require('request');
-var jwt = require('jsonwebtoken');
-var User = require("../models/user");
+var util = require('../util/shared/util');
+var errorHandler = require('../util/shared/errorHandler').errorHandler;
+var User = require('../models/user');
 
 exports.verifyID = function (req, res) {
     var username = req.body.username;
     var password = req.body.password;
+    var email = req.body.email;
 
     request.post('http://www.xingyunzh.com:3001/users/verify', {
         form: {
@@ -12,56 +14,73 @@ exports.verifyID = function (req, res) {
             'password': password
         }
     }, function (error, response, body) {
-        if (error) return console.error(error);
-
-        if (body) {
+        if (error) {
+            errorHandler(res, error, 'No such user !');
+        } else {
             var userBody = JSON.parse(body).body;
             if (userBody) {
+                // Find userBody in local database, if there is, update, else return
                 User
                     .findOne({thirdPartyId: userBody._id})
                     .exec(function (err, user) {
-                        if (err) return console.error(err);
-
-                        if (user) {
-                            User.update(
-                                {thirdPartyId: userBody._id},
-                                {lastLoginDate: new Date()},
-                                {multi: true},
-                                function (err, rawResponse) {
-                                    if (err) return console.error(err);
-                                }
-                            );
+                        if (err) {
+                            errorHandler(res, err, 'Cannot connect Database !');
                         } else {
-                            user = new User({
-                                thirdPartyId: userBody._id,
-                                fullName: userBody.name,
-                                createdDate: new Date(),
-                                lastLoginDate: new Date()
-                            });
+                            // update lastLoginDate and return token
+                            if (user) {
+                                User
+                                    .update(
+                                        {thirdPartyId: userBody._id},
+                                        {lastLoginDate: new Date()},
+                                        {multi: true})
+                                    .exec(function (err, rawResponse) {
+                                        if (err) errorHandler(res, err, 'Cannot update to Database !');
+                                    });
 
-                            user.save(function (err, user) {
-                                if (err) return console.error(err);
-                            });
+                                var token = user.generateToken(300);
+
+                                res.json(util.wrapBody({
+                                    success: true,
+                                    isNew: false,
+                                    token: token
+                                }, 'S'));
+                            } else {
+                                // add user to database and return token
+                                if (email) {
+                                    user = new User({
+                                        thirdPartyId: userBody._id,
+                                        fullName: userBody.name,
+                                        email: email,
+                                        createdDate: new Date(),
+                                        lastLoginDate: new Date()
+                                    });
+
+                                    user.save(function (err, rawResponse) {
+                                        if (err) errorHandler(res, err, 'Cannot save to Database !');
+                                    });
+
+                                    var token = user.generateToken(300);
+
+                                    res.json(util.wrapBody({
+                                        success: true,
+                                        isNew: false,
+                                        token: token
+                                    }, 'S'));
+                                } else { // request email
+                                    res.json(util.wrapBody({
+                                        success: true,
+                                        isNew: true,
+                                    }, 'S'));
+                                }
+                            }
                         }
-                        var token = jwt.sign(user, 'xingyunzh-secret', {
-                            expiresIn: 300
-                        });
-
-                        res.json({
-                            success: true,
-                            token: token,
-                        });
                     });
             } else {
-                console.log("Verification failed!");
-                res.json({
-                    success: false
-                });
+                res.json(util.wrapBody({
+                    success: false,
+                    message: 'Wrong Password !'
+                }, 'E'));
             }
-        } else {
-            res.json({
-                success: false
-            })
         }
     });
 };
