@@ -14,6 +14,10 @@ var meetingSchema = Schema({
 
     isRepeat: Boolean,
 
+    attendees:[String],
+
+    observers:[String],
+
     agenda: [{
         type: Schema.Types.ObjectId,
         ref: 'AgendaItem'
