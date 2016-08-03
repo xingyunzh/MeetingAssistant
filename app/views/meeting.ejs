@@ -6,6 +6,7 @@
     <title>Meeting</title>
 </head>
 <body style="height: 100%">
+<% include includes/meeting/meetingCompose%>
 <% include includes/nav %>
 <div class="container">
     <div class="row">
@@ -26,11 +27,11 @@
         method: 'POST',
         headers: {'x-access-token': localStorage.getItem('token')}
     }).done(function (data) {
-        console.log(data);
         if (data.success) {
+            $
             $("#user").html(data.user + "&nbsp;<span class='caret'></span>");
         } else {
-            location.href = "/";
+            logOut();
         }
     });
 

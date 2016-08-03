@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Login</title>
+    <script src="/javascripts/login.js"></script>
+    <script>
+        history.replaceState({}, "Login", location.origin);
+        if (localStorage.getItem('token')) {
+            location.href = '/meeting';
+        }
+    </script>
 </head>
 <body style="height: 100%">
 <div class="jumbotron" id="login-jumbotron">
@@ -38,9 +45,5 @@
 </div>
 <% include includes/css %>
 <% include includes/js %>
-<script src="/javascripts/login.js"></script>
-<script>
-    history.replaceState({}, "Login", location.origin);
-</script>
 </body>
 </html>
