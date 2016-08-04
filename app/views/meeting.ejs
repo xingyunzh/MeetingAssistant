@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Meeting</title>
+    <% include includes/css %>
+    <% include includes/js %>
 </head>
 <body style="height: 100%">
 <% include includes/meeting/meetingCompose%>
@@ -11,19 +13,17 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <% include includes/meeting/meetingStatusPanel %>
+            <% include includes/meeting/meetingBoard %>
         </div>
 
         <div class="col-md-6">
-            <% include includes/meeting/meetingStatusPanel %>
+            <% include includes/meeting/meetingBoard %>
         </div>
     </div>
 </div>
-<% include includes/css %>
-<% include includes/js %>
 <script>
     $.ajax({
-        url: '/meeting',
+        url: '/api/meeting',
         method: 'POST',
         headers: {'x-access-token': localStorage.getItem('token')}
     }).done(function (data) {
@@ -36,9 +36,8 @@
 
     $(".meeting-status-panel:first").addClass("panel-info");
     $(".meeting-status-panel:last").addClass("panel-success");
-    $(".meeting-status:first").text("Not Done");
-    $(".meeting-status:last").text("Already Done");
-
+    $(".meeting-status:first").text("Not over yet");
+    $(".meeting-status:last").text("Over");
 </script>
 <script src="/javascripts/meeting.js"></script>
 </body>
