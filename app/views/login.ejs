@@ -3,7 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title><%= title %></title>
+    <title>Login</title>
+    <script src="/javascripts/login.js"></script>
+    <script>
+        history.replaceState({}, "Login", location.origin);
+        if (localStorage.getItem('token')) {
+            location.href = '/meeting';
+        }
+    </script>
 </head>
 <body style="height: 100%">
 <div class="jumbotron" id="login-jumbotron">
@@ -25,8 +32,12 @@
                             <label for="password">Password</label>
                             <input type="password" class="form-control" id="password" placeholder="Password" onclick="setLoginButtonDefault()">
                         </div>
+                        <div class="form-group sr-only" id="emailForm">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Email">
+                        </div>
                         <br>
-                        <button type="button" class="btn btn-success btn-block" id="login-button" onclick="logIn()">Login</button>
+                        <button type="button" class="btn btn-success btn-block" id="verify-button" onclick="verifyID()">Login</button>
                     </form>
                 </div>
             </div>
