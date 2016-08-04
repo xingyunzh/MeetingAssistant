@@ -4,15 +4,17 @@ var Schema = mongoose.Schema;
 var umjunctionSchema = Schema({
     userId: {
         type: Schema.Types.ObjectId,
-
-        ref: 'User'
-    }
+        ref: 'User'，
+        index:true
+    },
 
     meetingId: {
     	type: Schema.Types.ObjectId,
+        ref: 'Meeting',
+        index:true
+    },
 
-        ref: 'Meeting'
-    }
+    type:String
 });
 
 module.exports = mongoose.model('UMJunction', umjunctionSchema);

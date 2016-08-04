@@ -32,10 +32,7 @@ var meetingSchema = Schema({
         ref: 'User'
     },
 
-    recorder: {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    },
+    recorder: String,
 
     meetingMinutes: String
 });

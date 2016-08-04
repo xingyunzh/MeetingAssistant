@@ -1,4 +1,5 @@
 var Meeting = require("../models/meeting");
+var UMJunction = require("../models/umjunction");
 var errorHandler = require('../util/shared/errorHandler').errorHandler;
 var util = require("../util/shared/util");
 
@@ -24,13 +25,20 @@ exports.getMeetingById = function(req,res) {
 	Meeting
 		.findOne(meetingId)
 		.populate('host')
-		.populate('UMJunction')
-		.populate('recorder')
-		.exec(function(err,result){
+		.populate('agenda')
+		.exec(function(err,meetingResult){
 			if (err) {
 				errorHandler(err);
 			}else{
-				res.send(util.wrapBody(result,'S'));
+				UMJunction
+				.find({meetingId:meetingId})
+				.exec(function(err,usersResult){
+					if (err) {
+						errorHandler(err);
+					}else{
+						res.send(util.wrapBody({meeting:meetingResult,users:usersResult},'S'));
+					}
+				})
 			}
 		});
 };
