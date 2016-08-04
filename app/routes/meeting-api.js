@@ -20,3 +20,4 @@ router.post('/', function (req, res) {
 router.post('/create', meetingController.createMeeting);
 
 module.exports = router;
+
