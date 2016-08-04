@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
-var meetingSchema = mongoose.Schema({
+var meetingSchema = Schema({
     subject: String,
 
     description: String,
@@ -13,21 +14,21 @@ var meetingSchema = mongoose.Schema({
 
     isRepeat: Boolean,
 
-    agenda:[{
-    	type:Schema.Types.ObjectId,
-    	ref:'AgendaItem'
+    agenda: [{
+        type: Schema.Types.ObjectId,
+        ref: 'AgendaItem'
     }],
 
     alertTime: Date,
 
     host: {
-    	type:Schema.Types.ObjectId,
-    	ref:'User'
+        type: Schema.Types.ObjectId,
+        ref: 'User'
     },
 
     recorder: {
-    	type:Schema.Types.ObjectId,
-    	ref:'User'
+        type: Schema.Types.ObjectId,
+        ref: 'User'
     },
 
     meetingMinutes: String
