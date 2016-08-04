@@ -14,7 +14,6 @@ router.post('/', function (req, res) {
     })
 });
 
-router.post('/create', meetingController.createMeeting);
+router.post('/create', meetingController.createMeetingById);
 
 module.exports = router;
-
