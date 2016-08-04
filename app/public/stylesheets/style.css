@@ -70,3 +70,7 @@ body {
 #add-meeting-button:hover {
     background-color: #e7e7e7;
 }
+
+#recordContent {
+    height: auto;
+}
