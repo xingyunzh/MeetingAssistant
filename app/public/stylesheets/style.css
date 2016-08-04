@@ -63,10 +63,6 @@ body {
     cursor: pointer;
 }
 
-.meeting-date-time {
-    text-align: right;
-}
-
 #login-button:focus {
     outline: none;
 }
@@ -83,4 +79,8 @@ body {
 }
 #add-meeting-button:hover {
     background-color: #e7e7e7;
+}
+
+#recordContent {
+    height: auto;
 }
