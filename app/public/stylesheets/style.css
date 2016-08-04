@@ -63,10 +63,6 @@ body {
     cursor: pointer;
 }
 
-.meeting-date-time {
-    text-align: right;
-}
-
 #login-button:focus {
     outline: none;
 }
