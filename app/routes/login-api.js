@@ -8,4 +8,9 @@ router.get('/', function (req, res) {
     res.render('login', {title: 'Login', user: 'Login'});
 });
 
+
+
+
+
+
 module.exports = router;
