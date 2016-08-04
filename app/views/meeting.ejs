@@ -6,6 +6,8 @@
     <title>Meeting</title>
     <% include includes/css %>
     <% include includes/js %>
+    <link rel="stylesheet" href="/lib/smalot-bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css">
+    <script src="/lib/smalot-bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
 </head>
 <body style="height: 100%">
 <% include includes/meeting/meetingCompose%>
@@ -21,23 +23,6 @@
         </div>
     </div>
 </div>
-<script>
-    $.ajax({
-        url: '/api/meeting',
-        method: 'POST',
-        headers: {'x-access-token': localStorage.getItem('token')}
-    }).done(function (data) {
-        if (data.success) {
-            $("#user").html(data.user + "&nbsp;<span class='caret'></span>");
-        } else {
-            logOut();
-        }
-    });
-
-    $(".meeting-status-panel:first").addClass("panel-info");
-    $(".meeting-status-panel:last").addClass("panel-success");
-    $(".meeting-status:first").text("Not over yet");
-    $(".meeting-status:last").text("Over");
-</script>
+<script src="/javascripts/meeting.js"></script>
 </body>
 </html>
