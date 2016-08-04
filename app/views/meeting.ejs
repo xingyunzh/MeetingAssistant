@@ -28,7 +28,6 @@
         headers: {'x-access-token': localStorage.getItem('token')}
     }).done(function (data) {
         if (data.success) {
-            $
             $("#user").html(data.user + "&nbsp;<span class='caret'></span>");
         } else {
             logOut();
@@ -41,5 +40,6 @@
     $(".meeting-status:last").text("Already Done");
 
 </script>
+<script src="/javascripts/meeting.js"></script>
 </body>
 </html>

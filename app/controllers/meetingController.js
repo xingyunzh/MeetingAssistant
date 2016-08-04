@@ -9,6 +9,14 @@ exports.getDoneMeetingNum = function (req, res) {
     Meeting
         .find({isOver: true})
         .exec(function (err, docs) {
+            res.send(docs);
+        })
+}
+
+exports.getNotDoneMeetingNum=function (req,res) {
+    Meeting
+        .find({isOver:false})
+        .exec(function (err,docs) {
             return docs;
         })
 }
