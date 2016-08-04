@@ -6,6 +6,14 @@ var meetingController = require('../controllers/meetingController');
 router.get('/', function (req, res) {
     res.render('meeting');
 });
-router.post('/create', meetingController.createMeeting);
+
+router.post('/', function (req, res) {
+    res.json({
+        success: true,
+        user: req.decoded._doc.fullName
+    })
+});
+
+router.post('/create', meetingController.createMeetingById);
 
 module.exports = router;
