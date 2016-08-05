@@ -63,14 +63,22 @@ body {
     cursor: pointer;
 }
 
-.meeting-date-time {
-    text-align: right;
-}
-
 #login-button:focus {
     outline: none;
 }
 
 #add-meeting-button:hover {
     background-color: #e7e7e7;
+}
+
+.editble-div {
+    height: auto;
+}
+
+.agenda-input {
+    border: 0 none;
+}
+
+.agenda-input:focus {
+    outline: none;
 }

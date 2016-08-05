@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 var umjunctionSchema = Schema({
     userId: {
         type: Schema.Types.ObjectId,
-        ref: 'User'，
+        ref: 'User',
         index:true
     },
 
