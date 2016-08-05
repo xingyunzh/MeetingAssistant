@@ -5,7 +5,7 @@ var router = express.Router();
 var verificationAPI = require("./verification-api");
 var userAPI = require("./user-api");
 var meetingAPI = require("./meeting-api");
-var autoAPI = require('./routes/auto-api');
+var autoAPI = require('./auto-api');
 
 
 router.use("/", verificationAPI);
