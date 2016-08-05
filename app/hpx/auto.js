@@ -2,7 +2,7 @@ function myfunction(){
     var x=document.getElementById("input1").val;
     $.ajax({
         type: "post",
-        url: "/auto/autofun",
+        url: "/routerhpx/auto",
         data: { email: $input1.value() },
         dataType: "json",
         success: function (data) {
@@ -25,6 +25,7 @@ function myfunction(){
 function mousedown(term){
     $("#input1").val(term);
        $("#tbcontent").fadeOut();
+        $("ol").append("<li>data.json[i]</li>");
 }
 
 
