@@ -75,10 +75,21 @@ body {
     height: auto;
 }
 
-.agenda-input {
+.agenda-title-input{
     border: 0 none;
+    background-color: transparent;
+    width: 32em;
 }
 
+.agenda-title-input:focus,
 .agenda-input:focus {
     outline: none;
+}
+
+.agenda-delete-btn {
+    line-height: 0.9;
+}
+
+.add-agenda-button {
+    color: #777777;
 }

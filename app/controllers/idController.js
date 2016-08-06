@@ -37,7 +37,7 @@ exports.verify = function (req, res) {
                                         if (err) errorHandler(res, err, 'Cannot update to Database !');
                                     });
 
-                                var token = user.generateToken(300);
+                                var token = user.generateToken();
 
                                 res.json(util.wrapBody({
                                     success: true,
@@ -59,7 +59,7 @@ exports.verify = function (req, res) {
                                         if (err) errorHandler(res, err, 'Cannot save to Database !');
                                     });
 
-                                    var token = newUser.generateToken(300);
+                                    var token = newUser.generateToken();
 
                                     res.json(util.wrapBody({
                                         success: true,
