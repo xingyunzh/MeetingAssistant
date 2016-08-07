@@ -66,7 +66,17 @@ body {
 #login-button:focus {
     outline: none;
 }
-
+#agendadetails{
+    margin-left: 100px;
+    margin-right: 100px;
+    padding: 20px;
+    border:2px solid
+}
+#finaloption {
+    padding-left: 200px;
+    padding-right: 200px;
+    padding-top: 50px;
+}
 #add-meeting-button:hover {
     background-color: #e7e7e7;
 }
