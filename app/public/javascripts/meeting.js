@@ -13,8 +13,3 @@ $.ajax({
     }
 });
 
-$(".meeting-status-panel:first").addClass("panel-info");
-$(".meeting-status-panel:last").addClass("panel-success");
-$(".meeting-status:first").text("Not over yet");
-$(".meeting-status:last").text("Over");
-$('#datetimepicker').datetimepicker().val(new Date().format('yyyy-MM-dd hh:mm'));

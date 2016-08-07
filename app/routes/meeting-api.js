@@ -13,6 +13,7 @@ router.post('/', function (req, res) {
         user: req.decoded._doc.fullName
     })
 });
+router.post('/list',meetingController.getAllMeetings);
 
 router.post('/create', meetingController.createMeetingById);
 

@@ -43,18 +43,19 @@ exports.getMeetingById = function(req,res) {
 		});
 };
 
-exports.getDoneMeetingNum = function (req, res) {
+exports.getAllMeetings = function (req, res) {
     Meeting
         .find({isOver: true})
-        .exec(function (err, docs) {
-            res.send(docs);
-        })
-}
+        .exec(function (err, overDocs) {
+            if(err){
+                errorHandler(err);
+            }else {
+                Meeting
+                    .find({isOver:false})
+                    .exec(function (err, notOverDocs) {
+                        res.send(util.wrapBody({over:overDocs,notOver:notOverDocs},'S'));
+                    });
+            }
+        });
+};
 
-exports.getNotDoneMeetingNum=function (req,res) {
-    Meeting
-        .find({isOver:false})
-        .exec(function (err,docs) {
-            return docs;
-        })
-}
