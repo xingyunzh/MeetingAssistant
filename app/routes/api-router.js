@@ -5,14 +5,10 @@ var router = express.Router();
 var verificationAPI = require("./verification-api");
 var userAPI = require("./user-api");
 var meetingAPI = require("./meeting-api");
-<<<<<<< HEAD
 var autoAPI = require('./auto-api');
-
-=======
 var senmailAPI=require("./sendmail-api");
 var settingAPI=require("./setting-api");
 var hostviewAPI=require("./hostview-api");
->>>>>>> master
 
 router.use("/", verificationAPI);
 router.use("/meeting", meetingAPI);
