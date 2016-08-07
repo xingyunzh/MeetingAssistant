@@ -9,21 +9,54 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-xs-9">
-                        <input class="form-control" type="text" placeholder="Subject" autocomplete="off">
+                    <div class="col-xs-6">
+                        <input class="form-control" type="text" id="meeting-subject" placeholder="Subject" autocomplete="off">
                     </div>
-                    <div class="col-xs-3">
-                        <input class="form-control text-center" type="text" value="" id="meeting-date"
-                               data-date-format="yyyy-mm-dd hh:ii" readonly>
+                    <div class="col-xs-6">
+                        <input class="form-control" type="text" id="meeting-location" placeholder="Location" autocomplete="off">
                     </div>
                 </div>
                 <br>
-                <label for="recordContent">Description</label>
-                <div class="form-control editble-div" contenteditable="true"></div>
+                <div class="row">
+                    <div class="col-xs-4">
+                        <div class="input-group">
+                            <div class="input-group-addon">From</div>
+                            <input class="form-control text-center" type="text" value="" id="meeting-date-start"
+                                   data-date-format="yyyy-mm-dd hh:ii" readonly>
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="input-group">
+                            <div class="input-group-addon">&nbsp;&nbsp;To&nbsp;&nbsp;</div>
+                            <input class="form-control text-center" type="text" value="" id="meeting-date-end"
+                                   data-date-format="yyyy-mm-dd hh:ii" readonly>
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="input-group">
+                            <div class="input-group-addon">Repeat</div>
+                            <div class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-default repeat-button repeat-button-on">
+                                    <input type="radio" name="options" id="repeat-on" autocomplete="off"> On
+                                </label>
+                                <label class="btn btn-default repeat-button repeat-button-off">
+                                    <input type="radio" name="options" id="repeat-off" autocomplete="off"> Off
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <label for="meeting-description">Description</label>
+                <div class="form-control editble-div" id="meeting-description" contenteditable="true"></div>
                 <br>
                 <label for="agenda">Agenda</label>
                 <div class="panel-group" id="agenda" role="tablist" aria-multiselectable="true">
-                    <% include agendaPanel %>
+                </div>
+                <div class="panel panel-default">
+                    <button class="btn btn-default btn-block add-agenda-button" onclick="newAgenda()">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </button>
                 </div>
             </div>
             <div class="modal-footer">

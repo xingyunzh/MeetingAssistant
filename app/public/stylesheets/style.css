@@ -75,12 +75,13 @@ body {
     height: auto;
 }
 
-.agenda-title-input{
+.agenda-title-input {
     border: 0 none;
     background-color: transparent;
-    width: 32em;
+    width: 36em;
 }
 
+.add-agenda-button:focus,
 .agenda-title-input:focus,
 .agenda-input:focus {
     outline: none;
@@ -92,4 +93,33 @@ body {
 
 .add-agenda-button {
     color: #777777;
+}
+
+.agenda-issue-btn {
+    cursor: pointer;
+    color: #777777;
+}
+
+.agenda-issue-btn:hover {
+    background-color: #ffffff;
+}
+
+.issue-input {
+    margin-bottom: 10px;
+}
+
+#agenda {
+    margin-bottom: 5px;
+}
+
+.repeat-button-on {
+    border-radius: 0;
+}
+
+.repeat-button {
+    width: 50%;
+}
+
+.btn-group {
+    width: 100%;
 }
