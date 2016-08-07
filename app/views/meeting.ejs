@@ -15,20 +15,14 @@
 <% include includes/nav %>
 <div class="container">
     <div class="row">
-        <tbody>
         <% for(var i=0;i<over.length;i++){%>
         <div class="col-md-6">
             <% include includes/meeting/meetingBoard %>
         </div>
         <%}%>
-        </tbody>
-        <tbody>
-        <% for (var j=0;j<notOver.length;j++{%>
         <div class="col-md-6">
             <% include includes/meeting/meetingBoard %>
         </div>
-        <%}%>
-        </tbody>
     </div>
 </div>
 </body>
