@@ -4,6 +4,6 @@ var router = express.Router();
 
 var automodelController = require("../controllers/automodelController");
 
-router.post('/autofun', sendmailController.autofun);
+router.post('/auto', automodelController.autofun);
 
 module.exports = router;
