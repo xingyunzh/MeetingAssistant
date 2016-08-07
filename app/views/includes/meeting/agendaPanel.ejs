@@ -1,0 +1,57 @@
+<div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="heading-1">
+        <a type="button" class="close agenda-delete-btn">
+            <span aria-hidden="true">&times;</span>
+        </a>
+        <h4 class="panel-title">
+            <a role="button" data-toggle="collapse" data-parent="#agenda"
+               href="#collapse-1"
+               aria-expanded="true" aria-controls="collapse-1">
+                #1
+                <input type="text" class="agenda-title-input" placeholder="Title" autocomplete="off">
+            </a>
+        </h4>
+    </div>
+    <div id="collapse-1" class="panel-collapse collapse" role="tabpanel"
+         aria-labelledby="heading-1">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-3">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="" class="col-xs-3 control-label">From</label>
+                                    <div class="col-xs-9">
+                                        <input class="form-control text-center agenda-time" type="text" value=""
+                                               data-date-format="hh:ii" readonly>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-xs-3 control-label">To</label>
+                                    <div class="col-xs-9">
+                                        <input class="form-control text-center agenda-time" type="text" value=""
+                                               data-date-format="hh:ii" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-9">
+                    <label for="">Issues</label>
+                    <div class="input-group">
+                        <div class="input-group-addon agenda-issue-btn">
+                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                        </div>
+                        <input type="text" class="form-control agenda-input"></input>
+                        <div class="input-group-addon agenda-issue-btn">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
