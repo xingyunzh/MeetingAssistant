@@ -63,14 +63,73 @@ body {
     cursor: pointer;
 }
 
-.meeting-date-time {
-    text-align: right;
-}
-
 #login-button:focus {
     outline: none;
 }
-
+#agendadetails{
+    margin-left: 100px;
+    margin-right: 100px;
+    padding: 20px;
+    border:2px solid
+}
+#finaloption {
+    padding-left: 200px;
+    padding-right: 200px;
+    padding-top: 50px;
+}
 #add-meeting-button:hover {
     background-color: #e7e7e7;
+}
+
+.editble-div {
+    height: auto;
+}
+
+.agenda-title-input {
+    border: 0 none;
+    background-color: transparent;
+    width: 36em;
+}
+
+.add-agenda-button:focus,
+.agenda-title-input:focus,
+.agenda-input:focus {
+    outline: none;
+}
+
+.agenda-delete-btn {
+    line-height: 0.9;
+}
+
+.add-agenda-button {
+    color: #777777;
+}
+
+.agenda-issue-btn {
+    cursor: pointer;
+    color: #777777;
+}
+
+.agenda-issue-btn:hover {
+    background-color: #ffffff;
+}
+
+.issue-input {
+    margin-bottom: 10px;
+}
+
+#agenda {
+    margin-bottom: 5px;
+}
+
+.repeat-button-on {
+    border-radius: 0;
+}
+
+.repeat-button {
+    width: 50%;
+}
+
+.btn-group {
+    width: 100%;
 }

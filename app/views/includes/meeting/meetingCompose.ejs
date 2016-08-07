@@ -1,13 +1,63 @@
 <!-- Modal -->
 <div class="modal fade" id="new-meeting-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">New meeting</h4>
             </div>
             <div class="modal-body">
-                ...
+                <div class="row">
+                    <div class="col-xs-6">
+                        <input class="form-control" type="text" id="meeting-subject" placeholder="Subject" autocomplete="off">
+                    </div>
+                    <div class="col-xs-6">
+                        <input class="form-control" type="text" id="meeting-location" placeholder="Location" autocomplete="off">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-xs-4">
+                        <div class="input-group">
+                            <div class="input-group-addon">From</div>
+                            <input class="form-control text-center" type="text" value="" id="meeting-date-start"
+                                   data-date-format="yyyy-mm-dd hh:ii" readonly>
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="input-group">
+                            <div class="input-group-addon">&nbsp;&nbsp;To&nbsp;&nbsp;</div>
+                            <input class="form-control text-center" type="text" value="" id="meeting-date-end"
+                                   data-date-format="yyyy-mm-dd hh:ii" readonly>
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="input-group">
+                            <div class="input-group-addon">Repeat</div>
+                            <div class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-default repeat-button repeat-button-on">
+                                    <input type="radio" name="options" id="repeat-on" autocomplete="off"> On
+                                </label>
+                                <label class="btn btn-default repeat-button repeat-button-off">
+                                    <input type="radio" name="options" id="repeat-off" autocomplete="off"> Off
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <label for="meeting-description">Description</label>
+                <div class="form-control editble-div" id="meeting-description" contenteditable="true"></div>
+                <br>
+                <label for="agenda">Agenda</label>
+                <div class="panel-group" id="agenda" role="tablist" aria-multiselectable="true">
+                </div>
+                <div class="panel panel-default">
+                    <button class="btn btn-default btn-block add-agenda-button" onclick="newAgenda()">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </button>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
