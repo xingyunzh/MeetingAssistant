@@ -25,11 +25,11 @@ exports.sendmail=function (options) {
         html:'<b>Dear sir/madam:</b>'+
         '<br>It is delighted that you have accepted our invitation to attend the Conference as a recoder.'+
         '<br>About the arrangements for the meeting as follows:'+
-        '<br>1.Meeting name:'+options.meetingname+
+        '<br>1.Meeting subject:'+options.subject+
         '<br>2.Meeting time:'+options.meetingtime+
-        '<br>3.Meeting place:'+options.place+
-        '<br>4.Conference description:'+options.des+
-        '<br>5.The agenda:'+options.agen+
+        '<br>3.Meeting place:'+options.location+
+        '<br>4.Conference description:'+options.description+
+        '<br>5.The agenda:'+options.agenda+
         '<p>Please go here to enter <a href="{{ reset }}">MeetingAssistant</a></p>'+
         '<p><a href="{{ reset }}">Click here</a>to add the meeting to your canlendar.</p>'
     };
