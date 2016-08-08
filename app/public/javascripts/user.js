@@ -3,3 +3,5 @@
  */
 
 $("#add-meeting-button").hide();
+
+$(document).ready(initializeData('/api/user'));

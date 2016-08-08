@@ -9,6 +9,10 @@ $(".meeting-status:first").text("Not over yet");
 $(".meeting-status:last").text("Over");
 // End of Set UI element style
 
+// Load Data
+$(document).ready(initializeData('/api/meeting'));
+
+
 function initializeCreateMeetingUI() {
     $('#meeting-date-start').datetimepicker({
         autoclose: true,
@@ -34,7 +38,11 @@ function newAgenda() {
     var agendaString = String(agendaNum);
     $("#agenda").append("<div class='panel panel-default' id='agenda-panel-" + agendaString + "'></div>");
     var newAgendaID = "#agenda-panel-" + agendaString;
-    $(newAgendaID).load("views/agendaPanel.ejs", function () {
+    // $.get('/meeting/creation/agenda', function (data) {
+    //     console.log(data);
+    //     $(newAgendaID).html(data);
+    // })
+    $(newAgendaID).load("/views/agendaPanel.ejs", function () {
         $("#heading-default")
             .attr("id", "heading-" + agendaString);
         $("#title-default")
@@ -62,7 +70,7 @@ function newIssue(e) {
         .append("<div class='input-group issue-input'></div>")
         .children(".input-group")
         .last()
-        .load("views/issueItem.ejs", function () {
+        .load("/views/issueItem.ejs", function () {
             $(e.target).parent().remove();
         });
 }
