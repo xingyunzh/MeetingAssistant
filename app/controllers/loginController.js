@@ -6,12 +6,11 @@ var User = require('../models/user');
 exports.verify = function (req, res) {
     var username = req.body.username;
     var password = req.body.password;
-    var email = req.body.email;
 
     request.post('http://www.xingyunzh.com:3001/users/verify', {
         form: {
             'username': username,
-            'password': password
+            'password': password,
         }
     }, function (error, response, body) {
         if (error) {
@@ -46,32 +45,25 @@ exports.verify = function (req, res) {
                                 }, 'S'));
                             } else {
                                 // add user to database and return token
-                                if (email) {
-                                    newUser = new User({
-                                        thirdPartyId: userBody._id,
-                                        fullName: userBody.name,
-                                        email: email,
-                                        createdDate: new Date(),
-                                        lastLoginDate: new Date()
-                                    });
+                                newUser = new User({
+                                    thirdPartyId: userBody._id,
+                                    fullName: userBody.name,
+                                    email: userBody.email,
+                                    createdDate: new Date(),
+                                    lastLoginDate: new Date()
+                                });
 
-                                    newUser.save(function (err, rawResponse) {
-                                        if (err) errorHandler(res, err, 'Cannot save to Database !');
-                                    });
+                                newUser.save(function (err, rawResponse) {
+                                    if (err) errorHandler(res, err, 'Cannot save to Database !');
+                                });
 
-                                    var token = newUser.generateToken();
+                                var token = newUser.generateToken();
 
-                                    res.json(util.wrapBody({
-                                        success: true,
-                                        isNew: false,
-                                        token: token
-                                    }, 'S'));
-                                } else { // request email
-                                    res.json(util.wrapBody({
-                                        success: true,
-                                        isNew: true,
-                                    }, 'S'));
-                                }
+                                res.json(util.wrapBody({
+                                    success: true,
+                                    isNew: false,
+                                    token: token
+                                }, 'S'));
                             }
                         }
                     });

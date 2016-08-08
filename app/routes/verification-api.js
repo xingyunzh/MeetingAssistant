@@ -4,7 +4,7 @@
 var express = require('express');
 var router = express.Router();
 
-var idController = require('../controllers/idController');
+var idController = require('../controllers/loginController');
 
 router.get('/', function (req, res) {
     res.render('login');

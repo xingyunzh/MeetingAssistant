@@ -1,41 +1,34 @@
 /**
  * Created by morrieati on 8/4/16.
  */
-var agendaNum = 0;
 
-$.ajax({
-    url: '/api/meeting',
-    method: 'POST',
-    headers: {'x-access-token': localStorage.getItem('token')}
-}).done(function (data) {
-    if (data.success) {
-        $("#user").html(data.user + "&nbsp;<span class='caret'></span>");
-    } else {
-        logOut();
-    }
-});
-
+// Set UI element style
 $(".meeting-status-panel:first").addClass("panel-info");
 $(".meeting-status-panel:last").addClass("panel-success");
 $(".meeting-status:first").text("Not over yet");
 $(".meeting-status:last").text("Over");
+// End of Set UI element style
 
-$('#meeting-date-start').datetimepicker({
-    autoclose: true,
-}).on('changeDate', function (e) {
-    $('.agenda-time-start').datetimepicker({
+function initializeCreateMeetingUI() {
+    $('#meeting-date-start').datetimepicker({
         autoclose: true,
-        startView: 'day',
-        minView: 'hour',
-        maxView: 'day',
-        startDate: $('#meeting-date-start').val()
-    })
-}).val(new Date().format('yyyy-MM-dd hh:mm'));
+    }).on('changeDate', function (e) {
+        $('.agenda-time-start').datetimepicker({
+            autoclose: true,
+            startView: 'day',
+            minView: 'hour',
+            maxView: 'day',
+            startDate: $('#meeting-date-start').val()
+        })
+    }).val(new Date().format('yyyy-MM-dd hh:mm'));
 
-$('#meeting-date-end').datetimepicker({
-    autoclose: true,
-}).val(new Date().format('yyyy-MM-dd hh:mm'));
+    $('#meeting-date-end').datetimepicker({
+        autoclose: true,
+    }).val(new Date().format('yyyy-MM-dd hh:mm'));
+}
 
+// New meeting: Agenda
+var agendaNum = 0;
 function newAgenda() {
     agendaNum = agendaNum + 1;
     var agendaString = String(agendaNum);
@@ -89,4 +82,11 @@ function removeIssue(e) {
             .parent()
             .remove();
     }
+}
+
+function saveMeeting() {
+    $.ajax({
+        url: '/api/meeting/submission',
+
+    })
 }
