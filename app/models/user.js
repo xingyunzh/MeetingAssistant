@@ -20,8 +20,8 @@ var userSchema = Schema({
     lastLoginDate: Date
 });
 
-userSchema.methods.generateToken = function (expiresTime) {
-    return jwt.sign(this, 'xingyunzh-secret', {expiresIn: expiresTime});
+userSchema.methods.generateToken = function () {
+    return jwt.sign(this, 'xingyunzh-secret', {expiresIn: 3600});
 }
 
 module.exports = mongoose.model('User', userSchema);

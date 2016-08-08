@@ -1,0 +1,108 @@
+<form class="form-inline" align="center">
+    <div class="form-group">
+        <label for="meetingname">会议名称</label>
+        <input type="text" class="form-control" id="meetingname" placeholder="...">
+    </div>
+    <div class="form-group">
+        <label for="meetingtime">会议时间</label>
+        <input type="text" class="form-control" id="meetingtime" placeholder="...">
+    </div>
+    <div class="form-group">
+        <label for="meetingdescription">会议描述</label>
+        <input type="text" class="form-control" id="meetingdescription" placeholder="...">
+    </div>
+</form>
+<br>
+<form class="form-inline" align="center">
+    <div class="form-group">
+        <label>记录员</label>
+        <input type="text" class="form-control" id="Recorder" placeholder="...">
+        <button type="button" class="btn btn-default">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        </button>
+    </div>
+    <br>
+    <div class="form-group">
+        <label>参会者</label>
+        <input type="text" class="form-control" id="Attendee" placeholder="...">
+        <button type="button" class="btn btn-default">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        </button>
+    </div>
+    <br>
+    <div class="form-group">
+        <label>列席者</label>
+        <input type="text" class="form-control" id="Observer" placeholder="...">
+        <button type="button" class="btn btn-default">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        </button>
+    </div>
+</form>
+<br>
+<form class="form-inline form-horizontal">
+    <div align="center"><strong style="font-size:24px">议程</strong></div>
+    <div class="container" id="agendadetails">
+        <div class="row">
+            <div align="center">
+               <div class="col-md-3">
+                   <strong>议程1：议程描述</strong>
+                   <br>
+                   <textarea class="form-control" rows="3"></textarea>
+               </div>
+               <div class="col-md-3">
+                   <strong>议程1：关键问题</strong>
+                   <br>
+                   <textarea class="form-control" rows="3"></textarea>
+               </div>
+               <div class="col-md-6">
+                   <select multiple class="form-control" style="width: 80%;" size="5">
+                       <option value="小纸条">小纸条</option>
+                       <option></option>
+                       <option></option>
+                       <option></option>
+                       <option></option>
+                   </select>
+               </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-9 control-label">议程剩余时间：</label>
+                <div class="col-sm-3">
+                    <p class="form-control-static"><strong>5min</strong></p>
+                </div>
+            </div>
+            <br>
+            <div>
+                <label class="col-sm-2 control-label">议程延长</label>
+                <select class="form-control input-sm col-sm-2">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>5</option>
+                    <option>10</option>
+                    <option>15</option>
+                </select>
+                <label class="col-sm-1 control-label">分钟</label>
+                <button type="button" class="btn btn-success col-sm-1">延长</button>
+                <button type="button" class="btn btn-danger col-sm-1 col-sm-offset-6">结束议程</button>
+            </div>
+            <div>
+
+            </div>
+        </div>
+    </div>
+    <br>
+    <div id="finaloption">
+        <div class="col-sm-3">
+            <button type="button" class="btn btn-success" align="center">开始会议</button>
+        </div>
+        <div class="col-sm-3">
+            <button type="button" class="btn btn-success" align="center">保存改动</button>
+        </div>
+        <div class="col-sm-3">
+            <button type="button" class="btn btn-success" align="center">重新邀请</button>
+        </div>
+        <div class="col-sm-3">
+            <button type="button" class="btn btn-success" align="center">结束会议</button>
+        </div>
+    </div>
+</form>
