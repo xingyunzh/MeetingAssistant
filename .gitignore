@@ -4,3 +4,5 @@ app/public/lib/
 release/
 
 *.log
+app/public/11.html
+*.js
