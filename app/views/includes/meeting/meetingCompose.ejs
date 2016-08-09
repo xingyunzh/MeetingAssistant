@@ -5,52 +5,47 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">New meeting</h4>
+                <h4 class="modal-title" id="myModalLabel">新建会议</h4>
             </div>
             <div class="modal-body">
-                <div class="row">
-                    <div class="col-xs-6">
-                        <input class="form-control" type="text" id="meeting-subject" placeholder="Subject" autocomplete="off">
-                    </div>
-                    <div class="col-xs-6">
-                        <input class="form-control" type="text" id="meeting-location" placeholder="Location" autocomplete="off">
-                    </div>
-                </div>
+                <input class="form-control" type="text" id="meeting-subject" placeholder="主题" autocomplete="off">
                 <br>
                 <div class="row">
                     <div class="col-xs-4">
                         <div class="input-group">
-                            <div class="input-group-addon">From</div>
+                            <div class="input-group-addon">开始</div>
                             <input class="form-control text-center" type="text" value="" id="meeting-date-start"
                                    data-date-format="yyyy-mm-dd hh:ii" readonly>
                         </div>
-                    </div>
-                    <div class="col-xs-4">
+                        <br>
                         <div class="input-group">
-                            <div class="input-group-addon">&nbsp;&nbsp;To&nbsp;&nbsp;</div>
+                            <div class="input-group-addon">结束</div>
                             <input class="form-control text-center" type="text" value="" id="meeting-date-end"
                                    data-date-format="yyyy-mm-dd hh:ii" readonly>
                         </div>
+                        <br>
+                        <div class="form-control">
+                            <input type="text" class="col-xs-12 no-decoration-textbox" placeholder="记录员">
+                        </div>
                     </div>
-                    <div class="col-xs-4">
-                        <div class="input-group">
-                            <div class="input-group-addon">Repeat</div>
-                            <div class="btn-group" data-toggle="buttons">
-                                <label class="btn btn-default repeat-button repeat-button-on">
-                                    <input type="radio" name="options" id="repeat-on" autocomplete="off"> On
-                                </label>
-                                <label class="btn btn-default repeat-button repeat-button-off">
-                                    <input type="radio" name="options" id="repeat-off" autocomplete="off"> Off
-                                </label>
-                            </div>
+                    <div class="col-xs-8">
+                        <input class="form-control" type="text" id="meeting-location" placeholder="地点"
+                               autocomplete="off">
+                        <br>
+                        <div class="form-control">
+                            <input type="text" class="col-xs-12 no-decoration-textbox" placeholder="与会者">
+                        </div>
+                        <br>
+                        <div class="form-control">
+                            <input type="text" class="col-xs-12 no-decoration-textbox" placeholder="列席者">
                         </div>
                     </div>
                 </div>
                 <br>
-                <label for="meeting-description">Description</label>
+                <label for="meeting-description">会议描述</label>
                 <div class="form-control editble-div" id="meeting-description" contenteditable="true"></div>
                 <br>
-                <label for="agenda">Agenda</label>
+                <label for="agenda">议程</label>
                 <div class="panel-group" id="agenda" role="tablist" aria-multiselectable="true">
                 </div>
                 <div class="panel panel-default">
@@ -60,8 +55,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save meeting</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">保存会议</button>
             </div>
         </div>
     </div>
