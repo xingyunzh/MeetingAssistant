@@ -18,6 +18,23 @@ exports.sendmail=function (options) {
 // setup e-mail data with unicode symbols
     var mailOptions1 = {
         from: '1443093525@qq.com', // 发件地址
+        to: options.tohostmail, // 收件列表
+        subject: 'Meeting invitation', // 标题
+        //text和html两者只支持一种
+        //text: 'Hello world ?', // 标题
+        html:'<b>Dear sir/madam:</b>'+
+        '<br>It is delighted that you have accepted our invitation to attend the Conference as a host.'+
+        '<br>About the arrangements for the meeting as follows:'+
+        '<br>1.Meeting subject:'+options.subject+
+        '<br>2.Meeting time:'+options.period+
+        '<br>3.Meeting place:'+options.location+
+        '<br>4.Conference description:'+options.description+
+        '<br>5.Agenda:'+options.agenda+
+        '<p>Please go here to enter <a href="{{ reset }}">MeetingAssistant</a></p>'+
+        '<p><a href="{{ reset }}">Click here</a>to add the meeting to your canlendar.</p>'
+    };
+    var mailOptions2 = {
+        from: '1443093525@qq.com', // 发件地址
         to: options.torecodermail, // 收件列表
         subject: 'Meeting invitation', // 标题
         //text和html两者只支持一种
@@ -26,14 +43,14 @@ exports.sendmail=function (options) {
         '<br>It is delighted that you have accepted our invitation to attend the Conference as a recoder.'+
         '<br>About the arrangements for the meeting as follows:'+
         '<br>1.Meeting subject:'+options.subject+
-        '<br>2.Meeting time:'+options.meetingtime+
+        '<br>2.Meeting time:'+options.period+
         '<br>3.Meeting place:'+options.location+
         '<br>4.Conference description:'+options.description+
-        '<br>5.The agenda:'+options.agenda+
+        '<br>5.Agenda:'+options.agenda+
         '<p>Please go here to enter <a href="{{ reset }}">MeetingAssistant</a></p>'+
         '<p><a href="{{ reset }}">Click here</a>to add the meeting to your canlendar.</p>'
     };
-    var mailOptions2 = {
+    var mailOptions3 = {
         from: '1443093525@qq.com', // 发件地址
         to: options.toconventionermail, // 收件列表
         subject: 'Meeting invitation', // 标题
@@ -42,15 +59,31 @@ exports.sendmail=function (options) {
         html:'<b>Dear sir/madam:</b>'+
         '<br>It is delighted that you have accepted our invitation to attend the Conference as a conventioner.'+
         '<br>About the arrangements for the meeting as follows:'+
-        '<br>1.Meeting name:'+options.meetingname+
-        '<br>2.Meeting time:'+options.meetingtime+
-        '<br>3.Meeting place:'+options.place+
-        '<br>4.Conference description:'+options.des+
-        '<br>5.The agenda:'+options.agen+
+        '<br>1.Meeting subject:'+options.subject+
+        '<br>2.Meeting time:'+options.period+
+        '<br>3.Meeting place:'+options.location+
+        '<br>4.Conference description:'+options.description+
+        '<br>5.Agenda:'+options.agenda+
         '<p>Please go here to enter <a href="{{ reset }}">MeetingAssistant</a></p>'+
         '<p><a href="{{ reset }}">Click here</a>to add the meeting to your canlendar.</p>'
     };
-
+    var mailOptions4 = {
+        from: '1443093525@qq.com', // 发件地址
+        to: options.toattendermail, // 收件列表
+        subject: 'Meeting invitation', // 标题
+        //text和html两者只支持一种
+        //text: 'Hello world ?', // 标题
+        html:'<b>Dear sir/madam:</b>'+
+        '<br>It is delighted that you have accepted our invitation to attend the Conference as a attender.'+
+        '<br>About the arrangements for the meeting as follows:'+
+        '<br>1.Meeting subject:'+options.subject+
+        '<br>2.Meeting time:'+options.period+
+        '<br>3.Meeting place:'+options.location+
+        '<br>4.Conference description:'+options.description+
+        '<br>5.Agenda:'+options.agenda+
+        '<p>Please go here to enter <a href="{{ reset }}">MeetingAssistant</a></p>'+
+        '<p><a href="{{ reset }}">Click here</a>to add the meeting to your canlendar.</p>'
+    };
 // send mail with defined transport object
     transporter.sendMail(mailOptions1,function (error, info) {
         if (error) {
@@ -60,6 +93,20 @@ exports.sendmail=function (options) {
 
     });
     transporter.sendMail(mailOptions2,function (error, info) {
+        if (error) {
+            return console.log(error);
+        }
+        console.log('Message sent: ' + info.response);
+
+    });
+    transporter.sendMail(mailOptions3,function (error, info) {
+        if (error) {
+            return console.log(error);
+        }
+        console.log('Message sent: ' + info.response);
+
+    });
+    transporter.sendMail(mailOptions4,function (error, info) {
         if (error) {
             return console.log(error);
         }

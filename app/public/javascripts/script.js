@@ -29,3 +29,17 @@ Date.prototype.format = function (fmt) { //author: meizz
             fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
     return fmt;
 }
+
+function initializeData(urlOfInitializingData) {
+    $.ajax({
+        url: urlOfInitializingData,
+        method: 'POST',
+        headers: {'x-access-token': localStorage.getItem('token')}
+    }).done(function (data) {
+        if (data.success) {
+            $("#user").html(data.user + "&nbsp;<span class='caret'></span>");
+        } else {
+            logOut();
+        }
+    });
+}
