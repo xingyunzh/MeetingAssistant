@@ -3,10 +3,6 @@ var router = express.Router();
 
 var userController = require('../controllers/userController');
 
-router.get('/', function (req, res) {
-    res.render('user');
-});
-
 router.post('/', function (req, res) {
     res.json({
         success: true,

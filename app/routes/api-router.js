@@ -2,21 +2,15 @@ var express = require("express");
 var token = require('../util/shared/token');
 var router = express.Router();
 
-var verificationAPI = require("./verification-api");
+var loginAPI = require("./login-api");
 var userAPI = require("./user-api");
 var meetingAPI = require("./meeting-api");
-var autoAPI = require('./auto-api');
-var senmailAPI=require("./sendmail-api");
-var settingAPI=require("./setting-api");
-var hostviewAPI=require("./hostview-api");
+var sendmailAPI = require("./sendmail-api");
+var viewAPI = require("./view-api");
 
-router.use("/", verificationAPI);
-router.use("/meeting", meetingAPI);
-router.use("/user", userAPI);
-router.use("/auto", autoAPI);
+router.use("/verification", loginAPI);
 
-router.use("/setting",settingAPI);
-router.use("/hostview",hostviewAPI);
+router.use("/", viewAPI);
 
 router.use(token.Parser);
 
