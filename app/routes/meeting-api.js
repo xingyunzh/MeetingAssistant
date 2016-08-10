@@ -1,19 +1,16 @@
 var express = require('express');
+var util = require('../util/shared/util');
 var router = express.Router();
 
 var meetingController = require('../controllers/meetingController');
 
-router.get('/', function (req, res) {
-    res.render('meeting');
-});
-
 router.post('/', function (req, res) {
-    res.json({
+    res.json(util.wrapBody({
         success: true,
         user: req.decoded._doc.fullName
-    })
+    }));
 });
 
-router.post('/create', meetingController.createMeetingById);
+router.post('/submission', meetingController.createMeetingById);
 
 module.exports = router;
