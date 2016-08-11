@@ -14,23 +14,24 @@ $.ajax({
     if (data.success) {
         overDocs=data.over;
         notOverDocs=data.notOver;
-    }
+
+            var sub="",time="",loc="",host="";
+            for(var i=0;i<overDocs.length;i++)
+            {
+
+                sub=sub+overDocs[i].subject;
+                time=time+overDocs[i].startTime;
+                loc=loc+overDocs[i].location;
+                host=host+overDocs[i].host;
+            }
+            document.getElementById("meeting-name").innerHTML=sub;
+            document.getElementById("meeting-date").innerHTML=time;
+            document.getElementById("meeting-location").innerHTML=loc;
+            document.getElementById("meeting-host").innerHTML=host;
+        }
+
 });
 
-// function change() {
-//     var sub="",time="",loc="",host="";
-//     for(var i=0;i<over.length;i++)
-//     {
-//         sub=sub+over[i].subject;
-//         time=time+over[i].startTime;
-//         loc=loc+over[i].location;
-//         host=host+over[i].host;
-//     }
-//     document.getElementById("meeting-name").innerHTML=sub;
-//     document.getElementById("meeting-date").innerHTML=time;
-//     document.getElementById("meeting-location").innerHTML=loc;
-//     document.getElementById("meeting-host").innerHTML=host;
-// }
 
 // Set UI element style
 
@@ -69,10 +70,6 @@ function newAgenda() {
     var agendaString = String(agendaNum);
     $("#agenda").append("<div class='panel panel-default' id='agenda-panel-" + agendaString + "'></div>");
     var newAgendaID = "#agenda-panel-" + agendaString;
-    // $.get('/meeting/creation/agenda', function (data) {
-    //     console.log(data);
-    //     $(newAgendaID).html(data);
-    // })
     $(newAgendaID).load("/views/agendaPanel.ejs", function () {
         $("#heading-default")
             .attr("id", "heading-" + agendaString);
