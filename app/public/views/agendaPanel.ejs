@@ -7,36 +7,37 @@
            href="#collapse-default"
            aria-expanded="true" aria-controls="collapse-default">
             <span id="num-default">#1</span>
-            <input type="text" class="agenda-title-input" placeholder="Title" autocomplete="off">
+            <input type="text" class="agenda-title-input" placeholder="议程描述" autocomplete="off">
         </a>
     </h4>
 </div>
 <div id="collapse-default" class="panel-collapse collapse" role="tabpanel"
      aria-labelledby="heading-default">
     <div class="panel-body">
-        <div class="row">
-            <div class="col-xs-3">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <div class="form-horizontal">
-                            <div class="form-group">
-                                <label for="" class="col-xs-3 control-label">From</label>
-                                <div class="col-xs-9">
-                                    <input class="form-control text-center agenda-time agenda-time-start" type="text" value=""
-                                           data-date-format="hh:ii" readonly>
-                                </div>
+        <div class="col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="col-xs-7">
+                        <div class="form-group">
+                            <label for="">议程时长</label>
+                            <div class="form-inline">
+                                <input class="form-control text-right" id="agenda-time-hours" type="text"> 小时
+                                <input class="form-control text-right" id="agenda-time-minutes" type="text"> 分钟
                             </div>
-                            <div class="form-group">
-                                <label for="" class="col-xs-3 control-label">To</label>
-                                <div class="col-xs-9">
-                                    <input class="form-control text-center agenda-time agenda-time-end" type="text" value=""
-                                           data-date-format="hh:ii" readonly>
-                                </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-5">
+                        <div class="form-group">
+                            <label for="">提前提醒</label>
+                            <div class="input-group">
+                                <input class="form-control text-right" id="agenda-alert-minutes" type="text">
+                                <div class="input-group-addon">分钟</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="col-xs-9">
                 <label for="">Issues</label>
                 <div class="input-group issue-input">
@@ -47,6 +48,18 @@
                     <div class="input-group-addon agenda-issue-btn">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true" onclick="newIssue(event)"></span>
                     </div>
+
+        </div>
+        <div class="col-xs-12" style="margin-top: 15px">
+            <label for="">关键问题</label>
+            <div class="input-group issue-input">
+                <div class="input-group-addon agenda-issue-btn">
+                    <span class="glyphicon glyphicon-minus" aria-hidden="true" onclick="removeIssue(event)"></span>
+                </div>
+                <input type="text" class="form-control agenda-input">
+                <div class="input-group-addon agenda-issue-btn">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true" onclick="newIssue(event)"></span>
+
                 </div>
             </div>
         </div>

@@ -48,14 +48,6 @@ $(document).ready(initializeData('/api/meeting'));
 function initializeCreateMeetingUI() {
     $('#meeting-date-start').datetimepicker({
         autoclose: true,
-    }).on('changeDate', function (e) {
-        $('.agenda-time-start').datetimepicker({
-            autoclose: true,
-            startView: 'day',
-            minView: 'hour',
-            maxView: 'day',
-            startDate: $('#meeting-date-start').val()
-        })
     }).val(new Date().format('yyyy-MM-dd hh:mm'));
 
     $('#meeting-date-end').datetimepicker({
@@ -67,8 +59,10 @@ function initializeCreateMeetingUI() {
 var agendaNum = 0;
 function newAgenda() {
     agendaNum = agendaNum + 1;
+
     var agendaString = String(agendaNum);
-    $("#agenda").append("<div class='panel panel-default' id='agenda-panel-" + agendaString + "'></div>");
+    $("#agenda").append("<div class='panel panel-default agenda-panel' id='agenda-panel-" + agendaString + "'></div>");
+
     var newAgendaID = "#agenda-panel-" + agendaString;
     $(newAgendaID).load("/views/agendaPanel.ejs", function () {
         $("#heading-default")

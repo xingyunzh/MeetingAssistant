@@ -2,6 +2,7 @@
  * Created by morrieati on 8/3/16.
  */
 var express = require('express');
+var util = require('./util');
 var jwt = require('jsonwebtoken');
 
 exports.Parser = function (req, res, next) {
@@ -12,7 +13,7 @@ exports.Parser = function (req, res, next) {
         // verifies secret and checks exp
         jwt.verify(token, 'xingyunzh-secret', function (err, decoded) {
             if (err) {
-                return res.json({success: false, message: 'Failed to authenticate token.'});
+                return res.json(util.wrapBody({success: false, message: 'Failed to authenticate token.'}));
             } else {
                 // if everything is good, save to request for use in other routes
                 req.decoded = decoded;
