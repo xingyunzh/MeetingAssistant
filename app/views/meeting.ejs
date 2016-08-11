@@ -8,20 +8,21 @@
     <% include includes/js %>
     <link rel="stylesheet" href="/lib/smalot-bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css">
     <script src="/lib/smalot-bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
-    <script src="/javascripts/meeting.js"></script>
 </head>
 <body style="height: 100%">
 <% include includes/meeting/meetingCompose%>
 <% include includes/nav %>
 <div class="container">
     <div class="row">
-        <div class="col-md-6" id="left-panel">
+        <div class="col-md-6">
             <% include includes/meeting/meetingBoard %>
         </div>
-        <div class="col-md-6" id="right-panel">
+
+        <div class="col-md-6">
             <% include includes/meeting/meetingBoard %>
         </div>
     </div>
 </div>
+<script src="/javascripts/meeting.js"></script>
 </body>
 </html>
