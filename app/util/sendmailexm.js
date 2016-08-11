@@ -1,7 +1,7 @@
 /**
  * Created by asus on 2016/7/30 0030.
  */
-var sendmailController = require("./../controllers/sendmailController")
+var sendmailController = require("../../controllers/sendmailController")
 var Meeting=require('../models/meeting')
 
 var meetingsubject=$("#meeting-subject").val();
@@ -20,8 +20,8 @@ var meeting=new Meeting({
     subject: meetingsubject,
     description: meetingdescription,
     location: meetinglocation,
-    //startTime: Date,
-    //endTime: Date,
+    startTime: startTime,
+    endTime: endTime,
     //isOver: Boolean,
     //isRepeat: Boolean,
     attendees:attendeesarray,

@@ -83,8 +83,58 @@ function removeIssue(e) {
 }
 
 function saveMeeting() {
-    $.ajax({
-        url: '/api/meeting/submission',
+    var meetingsubject=$("#meeting-subject").val();
+    
+    var startTime=$("#meeting-date-start").val();
+    var endTime=$("#meeting-date-end").val();
+    var period='from'+startTime+'to'+endTime;
+    
+    var recorder=$("#meeting-recoder").val();
+    
+    var meetinglocation=$("#meeting-location").val();
+    
+    var attendees=$("#meeting-sttendees").val();
+    var attendeesArray=string.split(',');
+    
+    var observers=$("#meeting-observers").val();
+    var observersArray=string.split(',');
+    
+    var meetingdescription=$("#meeting-description").val();
 
-    })
+    if (meetingsubject !==""){
+        if(startTime !==""&&endTime !==""){
+            if(recorder !==""&&attendees !==""&&observers !==""){
+                if(meetinglocation !==""){
+                    if(meetingdescription !==""){
+                        $.post("/submission",{
+                                meetingsubject: meetingsubject,
+                                startTime: startTime,
+                                endTime: endTime,
+                                period: period,
+                                recorder: recorder,
+                                meetinglocation: meetinglocation,
+                                attendees:attendees,
+                                attendeesArray:attendeesArray,
+                                observers:observers,
+                                observersArray:observersArray,
+                                meetingdescription: meetingdescription,
+                        } 
+                        )
+                    }else {
+                        alert("会议描述不能为空!")
+                    }
+                }else {
+                    alert("地点不能为空!")
+                }
+            }else {
+                alert("请补全所有参会者!")
+            }
+        }else{
+            alert("请设定起始时间!")
+        }
+    }else{
+        alert("主题不能为空!")
+        return false;
+    }
+    return true;
 }
