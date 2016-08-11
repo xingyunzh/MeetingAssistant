@@ -37,6 +37,18 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-xs-9">
+                <label for="">Issues</label>
+                <div class="input-group issue-input">
+                    <div class="input-group-addon agenda-issue-btn">
+                        <span class="glyphicon glyphicon-minus" aria-hidden="true" onclick="removeIssue(event)"></span>
+                    </div>
+                    <input type="text" class="form-control agenda-input">
+                    <div class="input-group-addon agenda-issue-btn">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true" onclick="newIssue(event)"></span>
+                    </div>
+
         </div>
         <div class="col-xs-12" style="margin-top: 15px">
             <label for="">关键问题</label>
@@ -44,9 +56,10 @@
                 <div class="input-group-addon agenda-issue-btn">
                     <span class="glyphicon glyphicon-minus" aria-hidden="true" onclick="removeIssue(event)"></span>
                 </div>
-                <input type="text" class="form-control agenda-input"></input>
+                <input type="text" class="form-control agenda-input">
                 <div class="input-group-addon agenda-issue-btn">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true" onclick="newIssue(event)"></span>
+
                 </div>
             </div>
         </div>

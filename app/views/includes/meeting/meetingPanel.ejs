@@ -1,17 +1,18 @@
-<% for (var i = 0; i < 4; i++) { %>
-<div class="panel panel-default meeting-panel" id="<%= 'meeting-panel-' + i %>">
+
+
     <div class="panel-body">
         <div class="meeting-name-location-host">
-            <strong class="meeting-name">Scrum meeting</strong>
-            <small>at</small>
-            <mark class="meeting-location">Summer Books</mark>
+            <strong class="meeting-name" id="meeting-list-name">Scrum meeting</strong>
+            <small>在</small>
+            <mark class="meeting-location" id="meeting-list-location">Summer Books</mark>
+            <small>召开</small>
         </div>
         <div class="meeting-date-time text-right">
-            <span class="meeting-date">yyyy-MM-dd hh:mm</span>
+            <span class="meeting-date" id="meeting-list-date">yyyy-MM-dd hh:mm</span>
             &nbsp;
-            <small>hosted by</small>
-            <u>Ray Zhang</u>
+            <small>由</small>
+            <u class="meeting-host" id="meeting-list-host">Ray Zhang</u>
+            <small>主持</small>
         </div>
     </div>
-</div>
-<% } %>
+

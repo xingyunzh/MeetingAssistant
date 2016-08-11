@@ -8,9 +8,8 @@ var meetingAPI = require("./meeting-api");
 var sendmailAPI = require("./sendmail-api");
 var viewAPI = require("./view-api");
 
-router.use("/verification", loginAPI);
-
 router.use("/", viewAPI);
+router.use("/verification", loginAPI);
 
 router.use(token.Parser);
 

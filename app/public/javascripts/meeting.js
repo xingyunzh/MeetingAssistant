@@ -2,12 +2,73 @@
  * Created by morrieati on 8/4/16.
  */
 
+
 // Set UI element style
-$(".meeting-status-panel:first").addClass("panel-info");
-$(".meeting-status-panel:last").addClass("panel-success");
-$(".meeting-status:first").text("Not over yet");
-$(".meeting-status:last").text("Over");
+
+$(".meeting-status-panel:first").addClass("panel-info left-panel");
+$(".meeting-status-panel:last").addClass("panel-success right-panel");
+$(".meeting-status:first").text("尚未完成");
+$(".meeting-status:last").text("已完成");
 // End of Set UI element style
+
+var overDocs;
+var notOverDocs;
+var overMeetingNum=0;
+var notOverMeetingNum=0;
+
+$.ajax({
+    url: '/api/meeting/list',
+    method: 'POST',
+    headers: {'x-access-token': localStorage.getItem('token')}
+}).done(function (data) {
+    console.log(data)
+    if (data.success) {
+        console.log("OK");
+        overDocs = data.over;
+        notOverDocs = data.notOver;
+        for (var i = 0; i < overDocs.length; i++) {
+            overMeetingNum = overMeetingNum + 1;
+            var overMeetingString = String(overMeetingNum);
+            $("#left-panel").append("<div class='panel panel-default meeting-panel' id='meeting-panel-" + overMeetingString + "'></div>");
+            var newMeetingID = "#meeting-panel-" + overMeetingString;
+            $(newMeetingID).load("/views/includes/meetings/meetingPanel.ejs", function () {
+                console.log("ok")
+                $("#meeting-list-name")
+                    .text(overDocs[i].subject)
+                    .attr("id", "meeting-list-name-" + overMeetingString);
+                $("#meeting-list-location")
+                    .text(overDocs[i].location)
+                    .attr("id", "meeting-list-location-" + overMeetingString);
+                $("#meeting-list-date")
+                    .text(overDocs[i].startTime.format('yyy-MM-dd hh:mm'))
+                    .attr("id", "meeting-list-date-" + overMeetingString);
+                $("#meeting-list-host")
+                    .text(overDocs[i].host)
+                    .attr("id", "meeting-list-host-" + overMeetingString);
+            });
+        }
+        for (var i = 0; i < notOverDocs.length; i++) {
+            notOverMeetingNum = notOverMeetingNum + 1;
+            var notOverMeetingString = String(notOverMeetingNum);
+            $("#right-panel").append("<div class='panel panel-default meeting-panel' id='meeting-panel-" + notOverMeetingString + "'></div>");
+            var newMeetingID = "#meeting-panel-" + notOverMeetingString;
+            $(newMeetingID).load("/views/includes/meetings/meetingPanel.ejs", function () {
+                $("#meeting-list-name")
+                    .text(notOverDocs[i].subject)
+                    .attr("id", "meeting-list-name-" + notOverMeetingString);
+                $("#meeting-list-location")
+                    .text(notOverDocs[i].location)
+                    .attr("id", "meeting-list-location-" + notOverMeetingString);
+                $("#meeting-list-date")
+                    .text(notOverDocs[i].startTime.format('yyy-MM-dd hh:mm'))
+                    .attr("id", "meeting-list-date-" + notOverMeetingString);
+                $("#meeting-list-host")
+                    .text(notOverDocs[i].host)
+                    .attr("id", "meeting-list-host-" + notOverMeetingString);
+            });
+        }
+    }
+});
 
 // Load Data
 $(document).ready(initializeData('/api/meeting'));
@@ -82,9 +143,11 @@ function removeIssue(e) {
     }
 }
 
+
 function saveMeeting() {
     $.ajax({
         url: '/api/meeting/submission',
 
     })
 }
+

@@ -16,7 +16,24 @@ exports.sendmail=function (options) {
 // the same transporter object for all e-mails
 
 // setup e-mail data with unicode symbols
-    var mailOptions1 = {
+    var mailOptionstohost = {
+        from: '1443093525@qq.com', // 发件地址
+        to: options.tohostmail, // 收件列表
+        subject: 'Meeting invitation', // 标题
+        //text和html两者只支持一种
+        //text: 'Hello world ?', // 标题
+        html:'<b>Dear sir/madam:</b>'+
+        '<br>It is delighted that you have accepted our invitation to attend the Conference as a host.'+
+        '<br>About the arrangements for the meeting as follows:'+
+        '<br>1.Meeting subject:'+options.subject+
+        '<br>2.Meeting time:'+options.period+
+        '<br>3.Meeting place:'+options.location+
+        '<br>4.Conference description:'+options.description+
+        '<br>5.Agenda:'+options.agenda+
+        '<p>Please go here to enter <a href="{{ reset }}">MeetingAssistant</a></p>'+
+        '<p><a href="{{ reset }}">Click here</a>to add the meeting to your canlendar.</p>'
+    };
+    var mailOptionstorecorder = {
         from: '1443093525@qq.com', // 发件地址
         to: options.torecodermail, // 收件列表
         subject: 'Meeting invitation', // 标题
@@ -25,41 +42,71 @@ exports.sendmail=function (options) {
         html:'<b>Dear sir/madam:</b>'+
         '<br>It is delighted that you have accepted our invitation to attend the Conference as a recoder.'+
         '<br>About the arrangements for the meeting as follows:'+
-        '<br>1.Meeting name:'+options.meetingname+
-        '<br>2.Meeting time:'+options.meetingtime+
-        '<br>3.Meeting place:'+options.place+
-        '<br>4.Conference description:'+options.des+
-        '<br>5.The agenda:'+options.agen+
+        '<br>1.Meeting subject:'+options.subject+
+        '<br>2.Meeting time:'+options.period+
+        '<br>3.Meeting place:'+options.location+
+        '<br>4.Conference description:'+options.description+
+        '<br>5.Agenda:'+options.agenda+
         '<p>Please go here to enter <a href="{{ reset }}">MeetingAssistant</a></p>'+
         '<p><a href="{{ reset }}">Click here</a>to add the meeting to your canlendar.</p>'
     };
-    var mailOptions2 = {
+    var mailOptionstoattendees = {
         from: '1443093525@qq.com', // 发件地址
-        to: options.toconventionermail, // 收件列表
+        to: options.toattendeesmail, // 收件列表
         subject: 'Meeting invitation', // 标题
         //text和html两者只支持一种
         //text: 'Hello world ?', // 标题
         html:'<b>Dear sir/madam:</b>'+
-        '<br>It is delighted that you have accepted our invitation to attend the Conference as a conventioner.'+
+        '<br>It is delighted that you have accepted our invitation to attend the Conference as an attendee.'+
         '<br>About the arrangements for the meeting as follows:'+
-        '<br>1.Meeting name:'+options.meetingname+
-        '<br>2.Meeting time:'+options.meetingtime+
-        '<br>3.Meeting place:'+options.place+
-        '<br>4.Conference description:'+options.des+
-        '<br>5.The agenda:'+options.agen+
+        '<br>1.Meeting subject:'+options.subject+
+        '<br>2.Meeting time:'+options.period+
+        '<br>3.Meeting place:'+options.location+
+        '<br>4.Conference description:'+options.description+
+        '<br>5.Agenda:'+options.agenda+
         '<p>Please go here to enter <a href="{{ reset }}">MeetingAssistant</a></p>'+
         '<p><a href="{{ reset }}">Click here</a>to add the meeting to your canlendar.</p>'
     };
-
+    var mailOptionstoobservers = {
+        from: '1443093525@qq.com', // 发件地址
+        to: options.toobserversmail, // 收件列表
+        subject: 'Meeting invitation', // 标题
+        //text和html两者只支持一种
+        //text: 'Hello world ?', // 标题
+        html:'<b>Dear sir/madam:</b>'+
+        '<br>It is delighted that you have accepted our invitation to attend the Conference as an observer.'+
+        '<br>About the arrangements for the meeting as follows:'+
+        '<br>1.Meeting subject:'+options.subject+
+        '<br>2.Meeting time:'+options.period+
+        '<br>3.Meeting place:'+options.location+
+        '<br>4.Conference description:'+options.description+
+        '<br>5.Agenda:'+options.agenda+
+        '<p>Please go here to enter <a href="{{ reset }}">MeetingAssistant</a></p>'+
+        '<p><a href="{{ reset }}">Click here</a>to add the meeting to your canlendar.</p>'
+    };
 // send mail with defined transport object
-    transporter.sendMail(mailOptions1,function (error, info) {
+    transporter.sendMail(mailOptionstohost,function (error, info) {
         if (error) {
             return console.log(error);
         }
         console.log('Message sent: ' + info.response);
 
     });
-    transporter.sendMail(mailOptions2,function (error, info) {
+    transporter.sendMail(mailOptionstorecorder,function (error, info) {
+        if (error) {
+            return console.log(error);
+        }
+        console.log('Message sent: ' + info.response);
+
+    });
+    transporter.sendMail(mailOptionstoattendees,function (error, info) {
+        if (error) {
+            return console.log(error);
+        }
+        console.log('Message sent: ' + info.response);
+
+    });
+    transporter.sendMail(mailOptionstoobservers,function (error, info) {
         if (error) {
             return console.log(error);
         }
