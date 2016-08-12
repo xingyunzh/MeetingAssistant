@@ -1,4 +1,5 @@
-<div class="panel panel-default meeting-panel">
+<% for (var i = 0; i < 4; i++) { %>
+<div class="panel panel-default meeting-panel" id="<%= 'meeting-panel-' + i %>">
     <div class="panel-body">
         <div class="meeting-name-location-host">
             <strong class="meeting-name">Scrum meeting</strong>
@@ -6,12 +7,11 @@
             <mark class="meeting-location">Summer Books</mark>
         </div>
         <div class="meeting-date-time text-right">
-            <span class="meeting-date">yyyy-MM-dd</span>
-            &nbsp;
-            <span class="meeting-time">hh:mm</span>
+            <span class="meeting-date">yyyy-MM-dd hh:mm</span>
             &nbsp;
             <small>hosted by</small>
             <u>Ray Zhang</u>
         </div>
     </div>
 </div>
+<% } %>

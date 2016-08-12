@@ -1,0 +1,55 @@
+<div class="panel-heading" role="tab" id="heading-default">
+    <a type="button" class="close agenda-delete-btn" onclick="removeAgenda(event)">
+        <span aria-hidden="true">&times;</span>
+    </a>
+    <h4 class="panel-title">
+        <a id="title-default" role="button" data-toggle="collapse" data-parent="#agenda"
+           href="#collapse-default"
+           aria-expanded="true" aria-controls="collapse-default">
+            <span id="num-default">#1</span>
+            <input type="text" class="agenda-title-input" placeholder="议程描述" autocomplete="off">
+        </a>
+    </h4>
+</div>
+<div id="collapse-default" class="panel-collapse collapse" role="tabpanel"
+     aria-labelledby="heading-default">
+    <div class="panel-body">
+        <div class="col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="col-xs-7">
+                        <div class="form-group">
+                            <label for="">议程时长</label>
+                            <div class="form-inline">
+                                <input class="form-control text-right" id="agenda-time-hours" type="text"> 小时
+                                <input class="form-control text-right" id="agenda-time-minutes" type="text"> 分钟
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-5">
+                        <div class="form-group">
+                            <label for="">提前提醒</label>
+                            <div class="input-group">
+                                <input class="form-control text-right" id="agenda-alert-minutes" type="text">
+                                <div class="input-group-addon">分钟</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12" style="margin-top: 15px">
+            <label for="">关键问题</label>
+            <div class="input-group issue-input">
+                <div class="input-group-addon agenda-issue-btn">
+                    <span class="glyphicon glyphicon-minus" aria-hidden="true" onclick="removeIssue(event)"></span>
+                </div>
+                <input type="text" class="form-control agenda-input"></input>
+                <div class="input-group-addon agenda-issue-btn">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true" onclick="newIssue(event)"></span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

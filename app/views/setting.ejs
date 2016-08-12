@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Setting</title>
+</head>
+<body>
+<% include includes/nav %>
+<% include includes/css %>
+<% include includes/js %>
+<% include includes/setting %>
+<script>
+    function addRow() {
+        $("#table").append("<tr> <td><input type='checkbox' style='width: 100%' onclick='Select(event)'></td><td><input type='text' style='width: 100%'></td> <td><input type='text' style='width: 100%'></td> <td><input type='text' style='width: 100%'></td> <td><input type='text' style='width: 100%'></td> </tr>");
+    }
+    function Select(e) {
+        if (e.target.checked) {
+            console.log($(e.target).parent().parent())
+            $(e.target).parent().parent().attr("id","delectall");
+        } else {
+
+        }
+    }
+    $("#delect").click(function(){
+        $("#delectall").remove();
+    });
+</script>
+</body>
+</html>
