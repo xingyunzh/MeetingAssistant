@@ -16,6 +16,8 @@ exports.createMeetingById = function (req, res) {
 	var observers = req.body.observers;
 	var observersArray = req.body.observersArray;
 	var meetingDescription = req.body.meetingDescription;
+	var agenda = req.body.agenda;
+	var agendaString = req.body.agendaString;
 
 	var meeting = new Meeting({
 		subject: meetingSubject,
@@ -27,10 +29,7 @@ exports.createMeetingById = function (req, res) {
 		//isRepeat: Boolean,
 		attendees:attendeesArray,
 		observers:observersArray,
-		//agenda: [{
-		//   type: Schema.Types.ObjectId,
-		//   ref: 'AgendaItem'
-		//}],
+		agenda:agenda,
 		//alertTime: Date,
 		//host: {
 		//   type: Schema.Types.ObjectId,
@@ -53,8 +52,7 @@ exports.createMeetingById = function (req, res) {
 	meeting.period=period;
 	meeting.location=meetingLocation;
 	meeting.description=meetingDescription;
-	meeting.agenda='xxxxxxxxxxxxxxxxxxxxxxxxx' +
-		'xxxxxxxxxxxxxxxxxxxxx';
+	meeting.agenda=agendaString;
 
 	sendmailController.sendmail(meeting);
 }
@@ -68,7 +66,7 @@ exports.deleteMeetingById = function (req, res) {
 }
 
 exports.getMeetingsByUserId = function(req,res) {
-	
+
 }
 
 exports.getMeetingById = function(req,res) {

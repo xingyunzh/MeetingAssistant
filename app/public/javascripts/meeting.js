@@ -112,8 +112,16 @@ function saveMeeting() {
         var minutes =  $("div#iStringCollapseID .agenda-time-minutes").val();
         agenda[i].length =hours+"小时"+minutes+"分钟";
         agenda[i].alertMinutes = $("div#iStringCollapseID .agenda-alert-minutes").val();
-        agenda[i].agendaItem =new Object();
-        agenda[i].agendaItem.= $("div#iStringCollapseID .agenda-input").val();
+        agenda[i].issue = new Object();
+        agenda[i].issue.description = $("div#iStringCollapseID .agenda-input").val();
+    }
+
+    var AgendaString="";
+    var agendaString = new Array();
+    for (var i = 0;i <= agendaNum-1;i++){
+        var iString = String(i);
+        agendaString[i] = iString+":"+agenda[i].description+"  "+"议程时长："+agenda[i].length+"\n"+agenda[i].issue;
+        AgendaString= AgendaString+"\n"+agendaString[i];
     }
 
     if (meetingsubject !==""){
@@ -137,6 +145,8 @@ function saveMeeting() {
                                 observers:observers,
                                 observersArray:observersArray,
                                 meetingDescription: meetingDescription,
+                                agenda:agenda,
+                                agendaString:AgendaString,
                             },
                             success: function(json){
                                 alert( "会议已保存" );
