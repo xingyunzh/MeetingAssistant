@@ -5,27 +5,28 @@ var errorHandler = require('../util/shared/errorHandler').errorHandler;
 var util = require("../util/shared/util");
 
 exports.createMeetingById = function (req, res) {
-	var meetingsubject = req.body.meetingsubject;
+	var meetingSubject = req.body.meetingSubject;
 	var startTime = req.body.startTime;
 	var endTime = req.body.endTime;
 	var period = req.body.period;
 	var recorder = req.body.recorder;
-	var meetinglocation = req.body.meetinglocation;
+	var meetingLocation = req.body.meetingLocation;
 	var attendees = req.body.attendees;
 	var attendeesArray = req.body.attendeesArray;
 	var observers = req.body.observers;
 	var observersArray = req.body.observersArray;
-	var meetingdescription = req.body.meetingdescription;
+	var meetingDescription = req.body.meetingDescription;
+
 	var meeting = new Meeting({
-		subject: meetingsubject,
-		description: meetingdescription,
-		location: meetinglocation,
+		subject: meetingSubject,
+		description: meetingDescription,
+		location: meetingLocation,
 		startTime: startTime,
 		endTime: endTime,
 		//isOver: Boolean,
 		//isRepeat: Boolean,
-		attendees:attendeesarray,
-		observers:observersarray,
+		attendees:attendeesArray,
+		observers:observersArray,
 		//agenda: [{
 		//   type: Schema.Types.ObjectId,
 		//   ref: 'AgendaItem'
@@ -38,15 +39,20 @@ exports.createMeetingById = function (req, res) {
 		recorder: recorder,
 		//meetingMinutes: String
 	});
+
+	meeting.save(function (err, rawResponse) {
+		if (err) errorHandler(res, err, 'Cannot save to Database !');
+	});
+
 	var meeting= new Object ();
 	meeting.tohostmail='peter.cheng@xingyunzh.com';
 	meeting.torecodermail=recorder;
 	meeting.toattendeesmail=attendees;
 	meeting.toobserversmail=observers;
-	meeting.subject=meetingsubject;
+	meeting.subject=meetingSubject;
 	meeting.period=period;
-	meeting.location=meetinglocation;
-	meeting.description=meetingdescription;
+	meeting.location=meetingLocation;
+	meeting.description=meetingDescription;
 	meeting.agenda='xxxxxxxxxxxxxxxxxxxxxxxxx' +
 		'xxxxxxxxxxxxxxxxxxxxx';
 

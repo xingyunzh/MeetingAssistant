@@ -83,7 +83,7 @@ function removeIssue(e) {
 }
 
 function saveMeeting() {
-    var meetingsubject=$("#meeting-subject").val();
+    var meetingSubject=$("#meeting-subject").val();
     
     var startTime=$("#meeting-date-start").val();
     var endTime=$("#meeting-date-end").val();
@@ -91,35 +91,57 @@ function saveMeeting() {
     
     var recorder=$("#meeting-recoder").val();
     
-    var meetinglocation=$("#meeting-location").val();
+    var meetingLocation=$("#meeting-location").val();
     
     var attendees=$("#meeting-sttendees").val();
-    var attendeesArray=string.split(',');
+    var attendeesArray=attendees.split(',');
     
     var observers=$("#meeting-observers").val();
-    var observersArray=string.split(',');
+    var observersArray=observers.split(',');
     
-    var meetingdescription=$("#meeting-description").val();
+    var meetingDescription=$("#meeting-description").val();
+
+    var agenda = new Array();
+    for (var i = 0;i <= agendaNum-1;i++) {
+        var iString = String(i);
+        var iStringCollapseID = "#collapse-" + iString;
+        var iStringTitleID = "#title-" + iString;
+        agenda[i] = new Object();
+        agenda[i].description = $("div#iStringTitleID .agenda-title-input").val();
+        var hours =  $("div#iStringCollapseID .agenda-time-hours").val();
+        var minutes =  $("div#iStringCollapseID .agenda-time-minutes").val();
+        agenda[i].length =hours+"小时"+minutes+"分钟";
+        agenda[i].alertMinutes = $("div#iStringCollapseID .agenda-alert-minutes").val();
+        agenda[i].agendaItem =new Object();
+        agenda[i].agendaItem.= $("div#iStringCollapseID .agenda-input").val();
+    }
 
     if (meetingsubject !==""){
         if(startTime !==""&&endTime !==""){
             if(recorder !==""&&attendees !==""&&observers !==""){
                 if(meetinglocation !==""){
                     if(meetingdescription !==""){
-                        $.post("/submission",{
-                                meetingsubject: meetingsubject,
+                        $.ajax({
+                            type: 'post',
+                            url: '/api/meeting/submission',
+                            dataType: 'json',
+                            data:{
+                                meetingSubject: meetingSubject,
                                 startTime: startTime,
                                 endTime: endTime,
                                 period: period,
                                 recorder: recorder,
-                                meetinglocation: meetinglocation,
+                                meetingLocation: meetingLocation,
                                 attendees:attendees,
                                 attendeesArray:attendeesArray,
                                 observers:observers,
                                 observersArray:observersArray,
-                                meetingdescription: meetingdescription,
-                        } 
-                        )
+                                meetingDescription: meetingDescription,
+                            },
+                            success: function(json){
+                                alert( "会议已保存" );
+                            }
+                        })
                     }else {
                         alert("会议描述不能为空!")
                     }
