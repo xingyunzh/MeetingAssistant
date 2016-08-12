@@ -1,7 +1,8 @@
-
 app/node_modules/
 app/public/lib/
 .idea/
 release/
 
 *.log
+app/public/11.html
+*.js
