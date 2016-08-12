@@ -16,7 +16,7 @@ exports.sendmail=function (options) {
 // the same transporter object for all e-mails
 
 // setup e-mail data with unicode symbols
-    var mailOptionstohost = {
+    var mailOptionsTohost = {
         from: '1443093525@qq.com', // 发件地址
         to: options.tohostmail, // 收件列表
         subject: 'Meeting invitation', // 标题
@@ -33,7 +33,7 @@ exports.sendmail=function (options) {
         '<p>Please go here to enter <a href="{{ reset }}">MeetingAssistant</a></p>'+
         '<p><a href="{{ reset }}">Click here</a>to add the meeting to your canlendar.</p>'
     };
-    var mailOptionstorecorder = {
+    var mailOptionsIorecorder = {
         from: '1443093525@qq.com', // 发件地址
         to: options.torecodermail, // 收件列表
         subject: 'Meeting invitation', // 标题
@@ -50,7 +50,7 @@ exports.sendmail=function (options) {
         '<p>Please go here to enter <a href="{{ reset }}">MeetingAssistant</a></p>'+
         '<p><a href="{{ reset }}">Click here</a>to add the meeting to your canlendar.</p>'
     };
-    var mailOptionstoattendees = {
+    var mailOptionsToattendees = {
         from: '1443093525@qq.com', // 发件地址
         to: options.toattendeesmail, // 收件列表
         subject: 'Meeting invitation', // 标题
@@ -67,7 +67,7 @@ exports.sendmail=function (options) {
         '<p>Please go here to enter <a href="{{ reset }}">MeetingAssistant</a></p>'+
         '<p><a href="{{ reset }}">Click here</a>to add the meeting to your canlendar.</p>'
     };
-    var mailOptionstoobservers = {
+    var mailOptionsToobservers = {
         from: '1443093525@qq.com', // 发件地址
         to: options.toobserversmail, // 收件列表
         subject: 'Meeting invitation', // 标题
@@ -85,28 +85,28 @@ exports.sendmail=function (options) {
         '<p><a href="{{ reset }}">Click here</a>to add the meeting to your canlendar.</p>'
     };
 // send mail with defined transport object
-    transporter.sendMail(mailOptionstohost,function (error, info) {
+    transporter.sendMail(mailOptionsTohost,function (error, info) {
         if (error) {
             return console.log(error);
         }
         console.log('Message sent: ' + info.response);
 
     });
-    transporter.sendMail(mailOptionstorecorder,function (error, info) {
+    transporter.sendMail(mailOptionsIorecorder,function (error, info) {
         if (error) {
             return console.log(error);
         }
         console.log('Message sent: ' + info.response);
 
     });
-    transporter.sendMail(mailOptionstoattendees,function (error, info) {
+    transporter.sendMail(mailOptionsToattendees,function (error, info) {
         if (error) {
             return console.log(error);
         }
         console.log('Message sent: ' + info.response);
 
     });
-    transporter.sendMail(mailOptionstoobservers,function (error, info) {
+    transporter.sendMail(mailOptionsToobservers,function (error, info) {
         if (error) {
             return console.log(error);
         }
