@@ -5,16 +5,16 @@ var umjunctionSchema = Schema({
     userId: {
         type: Schema.Types.ObjectId,
         ref: 'User',
-        index:true
+        index: true
     },
 
     meetingId: {
-    	type: Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'Meeting',
-        index:true
+        index: true
     },
 
-    type:String
+    type: String
 });
 
 module.exports = mongoose.model('UMJunction', umjunctionSchema);
