@@ -19,6 +19,7 @@ exports.createMeetingById = function (req, res) {
 	var agenda = req.body.agenda;
 	var agendaString = req.body.agendaString;
 
+	var 
 	var meeting = new Meeting({
 		subject: meetingSubject,
 		description: meetingDescription,
@@ -54,7 +55,7 @@ exports.createMeetingById = function (req, res) {
 	meeting.description=meetingDescription;
 	meeting.agenda=agendaString;
 
-	sendmailController.sendmail(meeting);
+	sendmailController.sendmail(meeting,next());
 }
 
 exports.updateMeetingById = function (req, res) {

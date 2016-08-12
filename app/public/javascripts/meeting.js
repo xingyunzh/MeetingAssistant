@@ -106,29 +106,40 @@ function saveMeeting() {
         var iString = String(i);
         var iStringCollapseID = "#collapse-" + iString;
         var iStringTitleID = "#title-" + iString;
+        
         agenda[i] = new Object();
-        agenda[i].description = $("div#iStringTitleID .agenda-title-input").val();
-        var hours =  $("div#iStringCollapseID .agenda-time-hours").val();
-        var minutes =  $("div#iStringCollapseID .agenda-time-minutes").val();
+
+        var des = $("div#iStringTitleID .agenda-title-input").val();
+        agenda[i].description = des[0];
+
+        var h= $("div#iStringCollapseID .agenda-time-hours").val();
+        var hours = h[0];
+
+        var m= $("div#iStringCollapseID .agenda-time-minutes").val();
+        var minutes =  m[0];
+
         agenda[i].length =hours+"小时"+minutes+"分钟";
-        agenda[i].alertMinutes = $("div#iStringCollapseID .agenda-alert-minutes").val();
+
+        var ale = $("div#iStringCollapseID .agenda-alert-minutes").val();
+        agenda[i].alertMinutes = ale[0];
+
         agenda[i].issue = new Object();
-        agenda[i].issue.description = $("div#iStringCollapseID .agenda-input").val();
+        agenda[i].issue.Description = $("div#iStringCollapseID .agenda-input").val();
     }
 
     var AgendaString="";
     var agendaString = new Array();
     for (var i = 0;i <= agendaNum-1;i++){
         var iString = String(i);
-        agendaString[i] = iString+":"+agenda[i].description+"  "+"议程时长："+agenda[i].length+"\n"+agenda[i].issue;
+        agendaString[i] = iString+":"+agenda[i].Description+"  "+"议程时长："+agenda[i].length+"\n"+agenda[i].issue.Description.join("  ");
         AgendaString= AgendaString+"\n"+agendaString[i];
     }
 
-    if (meetingsubject !==""){
+    if (meetingSubject !==""){
         if(startTime !==""&&endTime !==""){
             if(recorder !==""&&attendees !==""&&observers !==""){
-                if(meetinglocation !==""){
-                    if(meetingdescription !==""){
+                if(meetingLocation !==""){
+                    if(meetingDescription !==""){
                         $.ajax({
                             type: 'post',
                             url: '/api/meeting/submission',

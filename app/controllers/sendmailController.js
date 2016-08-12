@@ -1,4 +1,4 @@
-exports.sendmail=function (options) {
+exports.sendmail=function (options,next) {
     var nodemailer = require('nodemailer');
     var transporter = nodemailer.createTransport({
         //https://github.com/andris9/nodemailer-wellknown#supported-services 支持列表
@@ -113,4 +113,5 @@ exports.sendmail=function (options) {
         console.log('Message sent: ' + info.response);
 
     });
+    next();
 }
