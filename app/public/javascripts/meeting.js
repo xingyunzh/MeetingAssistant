@@ -101,27 +101,21 @@ function saveMeeting() {
     
     var meetingDescription=$("#meeting-description").val();
 
+    var d = $("div#iStringTitleID .agenda-title-input").val();
+
     var agenda = new Array();
     for (var i = 0;i <= agendaNum-1;i++) {
         var iString = String(i);
         var iStringCollapseID = "#collapse-" + iString;
         var iStringTitleID = "#title-" + iString;
-        
+
         agenda[i] = new Object();
 
-        var des = $("div#iStringTitleID .agenda-title-input").val();
-        agenda[i].description = des[0];
+        agenda[i].description = $("div#iStringTitleID .agenda-title-input").val();
 
-        var h= $("div#iStringCollapseID .agenda-time-hours").val();
-        var hours = h[0];
+        agenda[i].length =$("div#iStringCollapseID .agenda-time-hours").val()+"小时"+$("div#iStringCollapseID .agenda-time-minutes").val()+"分钟";
 
-        var m= $("div#iStringCollapseID .agenda-time-minutes").val();
-        var minutes =  m[0];
-
-        agenda[i].length =hours+"小时"+minutes+"分钟";
-
-        var ale = $("div#iStringCollapseID .agenda-alert-minutes").val();
-        agenda[i].alertMinutes = ale[0];
+        agenda[i].alertMinutes = $("div#iStringCollapseID .agenda-alert-minutes").val();
 
         agenda[i].issue = new Object();
         agenda[i].issue.Description = $("div#iStringCollapseID .agenda-input").val();
@@ -131,8 +125,11 @@ function saveMeeting() {
     var agendaString = new Array();
     for (var i = 0;i <= agendaNum-1;i++){
         var iString = String(i);
-        agendaString[i] = iString+":"+agenda[i].Description+"  "+"议程时长："+agenda[i].length+"\n"+agenda[i].issue.Description.join("  ");
-        AgendaString= AgendaString+"\n"+agendaString[i];
+        var string = String(i+1);
+        var iStringCollapseID = "#collapse-" + iString;
+        var iStringTitleID = "#title-" + iString;
+        agendaString[i] = string+":"+agenda[i].description+"  "+"议程时长："+agenda[i].length+"\n";
+        AgendaString= AgendaString+agendaString[i];
     }
 
     if (meetingSubject !==""){
@@ -142,8 +139,8 @@ function saveMeeting() {
                     if(meetingDescription !==""){
                         $.ajax({
                             type: 'post',
+                            headers: {'x-access-token': localStorage.getItem('token')},
                             url: '/api/meeting/submission',
-                            dataType: 'json',
                             data:{
                                 meetingSubject: meetingSubject,
                                 startTime: startTime,
@@ -156,11 +153,12 @@ function saveMeeting() {
                                 observers:observers,
                                 observersArray:observersArray,
                                 meetingDescription: meetingDescription,
+                                d: d,
                                 agenda:agenda,
                                 agendaString:AgendaString,
                             },
-                            success: function(json){
-                                alert( "会议已保存" );
+                            success : function () {
+                                alert("会议以创建，邮件已发送!")
                             }
                         })
                     }else {
