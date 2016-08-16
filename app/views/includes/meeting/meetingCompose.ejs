@@ -25,7 +25,7 @@
                         </div>
                         <br>
                         <div class="form-control">
-                            <input type="text" class="col-xs-12 no-decoration-textbox" placeholder="记录员">
+                            <input type="text" class="col-xs-12 no-decoration-textbox" id="meeting-recoder" placeholder="记录员">
                         </div>
                     </div>
                     <div class="col-xs-8">
@@ -33,17 +33,17 @@
                                autocomplete="off">
                         <br>
                         <div class="form-control">
-                            <input type="text" class="col-xs-12 no-decoration-textbox" placeholder="与会者">
+                            <input type="text" class="col-xs-12 no-decoration-textbox" id="meeting-sttendees" placeholder="与会者">
                         </div>
                         <br>
                         <div class="form-control">
-                            <input type="text" class="col-xs-12 no-decoration-textbox" placeholder="列席者">
+                            <input type="text" class="col-xs-12 no-decoration-textbox" id="meeting-observers" placeholder="列席者">
                         </div>
                     </div>
                 </div>
                 <br>
                 <label for="meeting-description">会议描述</label>
-                <div class="form-control editble-div" id="meeting-description" contenteditable="true"></div>
+                <input class="form-control editble-div" type="text" id="meeting-description" contenteditable="true"></input>
                 <br>
                 <label for="agenda">议程</label>
                 <div class="panel-group" id="agenda" role="tablist" aria-multiselectable="true">
@@ -56,7 +56,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary">保存会议</button>
+                <button type="button" class="btn btn-primary" onclick="saveMeeting()">保存会议</button>
             </div>
         </div>
     </div>
