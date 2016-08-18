@@ -10,6 +10,7 @@ var sendmailController = require('./sendmailController');
 
 exports.createMeetingById = function (req, res) {
 	console.log("body:",req.body);
+	console.log("agenda",req.body.agenda);
 	var meeting = {
 		tohostmail: '1443093525@qq.com',
 		torecodermail: req.body.recorder,
@@ -19,7 +20,7 @@ exports.createMeetingById = function (req, res) {
 		period: req.body.period,
 		location: req.body.meetingLocation,
 		description: req.body.meetingDescription,
-		agenda: 'xxxxxxxx'
+		agenda: req.body.agendaString,
 	};
 	sendmailController.sendmail(meeting,function next(){
 		console.log("发送完毕!")

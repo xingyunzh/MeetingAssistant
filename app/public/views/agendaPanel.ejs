@@ -7,7 +7,7 @@
            href="#collapse-default"
            aria-expanded="true" aria-controls="collapse-default">
             <span id="num-default">#1</span>
-            <input type="text" class="agenda-title-input" placeholder="议程描述" autocomplete="off">
+            <input type="text" id="agenda-title-input-default" placeholder="议程描述" autocomplete="off">
         </a>
     </h4>
 </div>
@@ -21,8 +21,8 @@
                         <div class="form-group">
                             <label for="">议程时长</label>
                             <div class="form-inline">
-                                <input class="form-control text-right agenda-time-hours" type="text"> 小时
-                                <input class="form-control text-right agenda-time-minutes" type="text"> 分钟
+                                <input class="form-control text-right" id="agenda-time-hours-default" type="text"> 小时
+                                <input class="form-control text-right" id="agenda-time-minutes-default" type="text"> 分钟
                             </div>
                         </div>
                     </div>
@@ -30,7 +30,7 @@
                         <div class="form-group">
                             <label for="">提前提醒</label>
                             <div class="input-group">
-                                <input class="form-control text-right agenda-alert-minutes" type="text">
+                                <input class="form-control text-right" id="agenda-alert-minutes-default" type="text">
                                 <div class="input-group-addon">分钟</div>
                             </div>
                         </div>

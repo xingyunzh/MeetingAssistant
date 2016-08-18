@@ -42,9 +42,17 @@ function newAgenda() {
         $("#num-default")
             .text("#" + agendaString)
             .attr("id", "num-" + agendaString);
+        $("#agenda-title-input-default")
+            .attr("id", "agenda-title-input-" + agendaString);
         $("#collapse-default")
             .attr("aria-labelledby", "heading-" + agendaString)
             .attr("id", "collapse-" + agendaString);
+        $("#agenda-time-hours-default")
+            .attr("id", "agenda-time-hours-" + agendaString);
+        $("#agenda-time-minutes-default")
+            .attr("id", "agenda-time-minutes-" + agendaString);
+        $("#agenda-alert-minutes-default")
+            .attr("id", "agenda-alert-minutes-" + agendaString);
     });
 }
 
@@ -87,7 +95,7 @@ function saveMeeting() {
     
     var startTime=$("#meeting-date-start").val();
     var endTime=$("#meeting-date-end").val();
-    var period='from'+startTime+'to'+endTime;
+    var period='from'+startTime+' to '+endTime;
     
     var recorder=$("#meeting-recoder").val();
     
@@ -101,35 +109,49 @@ function saveMeeting() {
     
     var meetingDescription=$("#meeting-description").val();
 
-    var d = $("div#iStringTitleID .agenda-title-input").val();
-
     var agenda = new Array();
     for (var i = 0;i <= agendaNum-1;i++) {
-        var iString = String(i);
-        var iStringCollapseID = "#collapse-" + iString;
-        var iStringTitleID = "#title-" + iString;
-
-        agenda[i] = new Object();
-
-        agenda[i].description = $("div#iStringTitleID .agenda-title-input").val();
-
-        agenda[i].length =$("div#iStringCollapseID .agenda-time-hours").val()+"小时"+$("div#iStringCollapseID .agenda-time-minutes").val()+"分钟";
-
-        agenda[i].alertMinutes = $("div#iStringCollapseID .agenda-alert-minutes").val();
-
-        agenda[i].issue = new Object();
-        agenda[i].issue.Description = $("div#iStringCollapseID .agenda-input").val();
+        var iString = String(i+1);
+        var newAgendaInputID ="#agenda-title-input-"+iString;
+        var newAgendaHoursID ="#agenda-time-hours-"+iString;
+        var newAgendaMinutesID ="#agenda-time-minutes-"+iString;
+        var newAgendaAlertMinutesID ="#agenda-alert-minutes-"+iString;
+        var iStringCollapseID = "div#collapse-" + iString+" .agenda-input";
+        var agenda1 = new Object();
+        agenda1.description = $(newAgendaInputID).val();
+        agenda1.length =$(newAgendaHoursID).val()+"小时"+$(newAgendaMinutesID).val()+"分钟";
+        agenda1.alertMinutes = $(newAgendaAlertMinutesID).val();
+        agenda1.issue = [];
+        var issueDiv = new Array();
+        issueDiv = $(iStringCollapseID);
+        for(var j=issueDiv.length;--j>=0;){
+            agenda1.issue[j] = issueDiv[j].value;
+        }
+        agenda[i] = agenda1;
     }
 
     var AgendaString="";
     var agendaString = new Array();
     for (var i = 0;i <= agendaNum-1;i++){
-        var iString = String(i);
-        var string = String(i+1);
-        var iStringCollapseID = "#collapse-" + iString;
-        var iStringTitleID = "#title-" + iString;
-        agendaString[i] = string+":"+agenda[i].description+"  "+"议程时长："+agenda[i].length+"\n";
+        var iString = String(i+1);
+        agendaString[i] = iString+":"+agenda[i].description+"  "+"议程时长："+agenda[i].length+"\n";
         AgendaString= AgendaString+agendaString[i];
+    }
+
+    var obj = {
+        meetingSubject: meetingSubject,
+            startTime: startTime,
+            endTime: endTime,
+            period: period,
+            recorder: recorder,
+            meetingLocation: meetingLocation,
+            attendees:attendees,
+            attendeesArray:attendeesArray,
+            observers:observers,
+            observersArray:observersArray,
+            meetingDescription: meetingDescription,
+            agenda:agenda,
+            agendaString:AgendaString,
     }
 
     if (meetingSubject !==""){
@@ -141,24 +163,10 @@ function saveMeeting() {
                             type: 'post',
                             headers: {'x-access-token': localStorage.getItem('token')},
                             url: '/api/meeting/submission',
-                            data:{
-                                meetingSubject: meetingSubject,
-                                startTime: startTime,
-                                endTime: endTime,
-                                period: period,
-                                recorder: recorder,
-                                meetingLocation: meetingLocation,
-                                attendees:attendees,
-                                attendeesArray:attendeesArray,
-                                observers:observers,
-                                observersArray:observersArray,
-                                meetingDescription: meetingDescription,
-                                d: d,
-                                agenda:agenda,
-                                agendaString:AgendaString,
-                            },
-                            success : function () {
-                                alert("会议以创建，邮件已发送!")
+                            data: JSON.stringify(obj),
+                            contentType: "application/json",
+                            success : function (){
+                                alert("会议已创建，邮件已发送!")
                             }
                         })
                     }else {
