@@ -17,4 +17,5 @@ router.get('/meeting/:id/', function (req, res) {
     res.render('hostview', {meetingId: req.params.id});
 });
 
+
 module.exports = router;

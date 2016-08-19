@@ -2,9 +2,10 @@
  * Created by morrieati on 8/4/16.
  */
 
-
+var mongoose=require('mongoose');
 // Set UI element style
 
+//get the meetings list
 $(".meeting-status-panel:first").addClass("panel-info left-panel");
 $(".meeting-status-panel:last").addClass("panel-success right-panel");
 $(".meeting-status:first").text("尚未完成");
@@ -29,8 +30,8 @@ $.ajax({
         for (var i = 0; i < overDocs.length; i++) {
             overMeetingNum = overMeetingNum + 1;
             var overMeetingString = String(overMeetingNum);
-            $("#left-panel").append("<div class='panel panel-default meeting-panel' id='meeting-panel-" + overMeetingString + "'></div>");
-            var newMeetingID = "#meeting-panel-" + overMeetingString;
+            $("#left-panel").append("<div class='panel panel-default meeting-panel' id='meeting-list-panel-" + overDocs[i]._id + "'></div>");
+            var newMeetingID = "#meeting-list-panel-" + overDocs[i]._id;
             $(newMeetingID).load("/views/includes/meetings/meetingPanel.ejs", function () {
                 console.log("ok")
                 $("#meeting-list-name")
@@ -50,8 +51,8 @@ $.ajax({
         for (var i = 0; i < notOverDocs.length; i++) {
             notOverMeetingNum = notOverMeetingNum + 1;
             var notOverMeetingString = String(notOverMeetingNum);
-            $("#right-panel").append("<div class='panel panel-default meeting-panel' id='meeting-panel-" + notOverMeetingString + "'></div>");
-            var newMeetingID = "#meeting-panel-" + notOverMeetingString;
+            $("#right-panel").append("<div class='panel panel-default meeting-panel' id='meeting-list-panel-" + notOverDocs[i]._id + "'></div>");
+            var newMeetingID = "#meeting-panel-" + notOverDocs[i]._id;
             $(newMeetingID).load("/views/includes/meetings/meetingPanel.ejs", function () {
                 $("#meeting-list-name")
                     .text(notOverDocs[i].subject)

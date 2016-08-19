@@ -14,4 +14,6 @@ router.post('/list',meetingController.getAllMeetings);
 
 router.post('/submission', meetingController.createMeetingById);
 
+router.post('/hostview',meetingController.getMeetingById);
+
 module.exports = router;
